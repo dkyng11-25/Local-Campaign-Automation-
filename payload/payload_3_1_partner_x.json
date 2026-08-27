@@ -1,0 +1,137 @@
+{
+  "report": "SPRINKSIGHTS",
+  "reportingEngine": "LISTENING",
+  "timeField": null,
+  "startTime": 1787724000000,
+  "endTime": 1787731200000,
+  "timeZone": "Asia/Seoul",
+  "page": 0,
+  "pageSize": 50,
+  "filters": [
+    {
+      "dimensionName": "QUERY",
+      "filterType": "IN",
+      "values": [
+        "(\r\n  author: \"rosterloh\"\r\n  OR author: \"izadi_shahram\"\r\n  OR author: \"lily_lin\"\r\n  OR author: \"drakenic\"\r\n  OR author: \"googledrive\"\r\n  OR author: \"cristianoamon\"\r\n  OR author: \"donnymac\"\r\n  OR author: \"Qualcomm\"\r\n  OR author: \"omarberrada\"\r\n  OR author: \"wesbrown24\"\r\n  OR author: \"ManUtd\"\r\n  OR author: \"_GentleMonster_\"\r\n  OR author: \"davegilboa\"\r\n  OR author: \"neilblumenthal\"\r\n  OR author: \"WarbyParker\"\r\n  OR author: \"dmitry140\"\r\n  OR author: \"perplexity_ai\"\r\n  OR author: \"Prada\"\r\n  OR author: \"netflix\"\r\n  OR author: \"Strava\"\r\n  OR author: \"iFit\"\r\n  OR author: \"aviam3\"\r\n  OR author: \"IBM\"\r\n  OR author: \"Cisco\"\r\n  OR author: \"verizon\"\r\n  OR author: \"EE\"\r\n  OR author: \"virginmedia\"\r\n  OR author: \"VodafoneThreeUK\"\r\n  OR author: \"currys\"\r\n  OR author: \"tescomobile\"\r\n  OR author: \"argos_online\"\r\n  OR author: \"zainkuwait\"\r\n  OR author: \"ooredooqatar\"\r\n  OR author: \"mediamarkt_tr\"\r\n  OR author: \"Turkcell\"\r\n  OR author: \"jarirbookstore\"\r\n  OR author: \"cellcomca\"\r\n  OR author: \"poorvika_india\"\r\n  OR author: \"cromaretail\"\r\n  OR author: \"reliancejio\"\r\n  OR author: \"SoftBank\"\r\n  OR author: \"official_kddi\"\r\n  OR author: \"docomo\"\r\n  OR author: \"ATT\"\r\n  OR author: \"TMobile\"\r\n  OR author: \"Rogers\"\r\n  OR author: \"Bell\"\r\n  OR author: \"VodafoneGroup\"\r\n  OR author: \"BTGroup\"\r\n  OR author: \"deutschetelekom\"\r\n  OR author: \"Telefonica\"\r\n  OR author: \"orange\"\r\n  OR author: \"SKtelecom\"\r\n  OR author: \"kt_corp\"\r\n  OR author: \"LGUplus\"\r\n  OR author: \"Singtel\"\r\n  OR author: \"Telstra\"\r\n  OR author: \"BestBuy\"\r\n  OR author: \"Walmart\"\r\n  OR author: \"Target\"\r\n  OR author: \"amazon\"\r\n  OR author: \"Apple\"\r\n  OR author: \"Tesco\"\r\n  OR author: \"MediaMarkt\"\r\n  OR author: \"FnacDarty\"\r\n  OR author: \"CarrefourGroup\"\r\n  OR author: \"HarveyNormanAU\"\r\n  OR author: \"JBHiFi\"\r\n  OR author: \"RelianceDigital\"\r\n  OR author: \"emart_pr\"\r\n)\r\nOR \r\nsource: Twitter AND (\r\nurl: \"x.com/rosterloh\" OR\r\nurl: \"x.com/izadi_shahram\" OR\r\nurl: \"x.com/lily_lin\" OR\r\nurl: \"x.com/drakenic\" OR\r\nurl: \"x.com/googledrive\" OR\r\nurl: \"x.com/cristianoamon\" OR\r\nurl: \"x.com/donnymac\" OR\r\nurl: \"x.com/Qualcomm\" OR\r\nurl: \"x.com/omarberrada\" OR\r\nurl: \"x.com/wesbrown24\" OR\r\nurl: \"x.com/ManUtd\" OR\r\nurl: \"x.com/_GentleMonster_\" OR\r\nurl: \"x.com/davegilboa\" OR\r\nurl: \"x.com/neilblumenthal\" OR\r\nurl: \"x.com/WarbyParker\" OR\r\nurl: \"x.com/dmitry140\" OR\r\nurl: \"x.com/perplexity_ai\" OR\r\nurl: \"x.com/Prada\" OR\r\nurl: \"x.com/netflix\" OR\r\nurl: \"x.com/Strava\" OR\r\nurl: \"x.com/iFit\" OR\r\nurl: \"x.com/aviam3\" OR\r\nurl: \"x.com/IBM\" OR\r\nurl: \"x.com/Cisco\" OR\r\nurl: \"x.com/verizon\" OR\r\nurl: \"x.com/EE\" OR\r\nurl: \"x.com/virginmedia\" OR\r\nurl: \"x.com/VodafoneThreeUK\" OR\r\nurl: \"x.com/currys\" OR\r\nurl: \"x.com/tescomobile\" OR\r\nurl: \"x.com/argos_online\" OR\r\nurl: \"x.com/zainkuwait\" OR\r\nurl: \"x.com/ooredooqatar\" OR\r\nurl: \"x.com/mediamarkt_tr\" OR\r\nurl: \"x.com/Turkcell\" OR\r\nurl: \"x.com/jarirbookstore\" OR\r\nurl: \"x.com/cellcomca\" OR\r\nurl: \"x.com/poorvika_india\" OR\r\nurl: \"x.com/cromaretail\" OR\r\nurl: \"x.com/reliancejio\" OR\r\nurl: \"x.com/SoftBank\" OR\r\nurl: \"x.com/official_kddi\" OR\r\nurl: \"x.com/docomo\" OR\r\nurl: \"x.com/ATT\" OR\r\nurl: \"x.com/TMobile\" OR\r\nurl: \"x.com/Rogers\" OR\r\nurl: \"x.com/Bell\" OR\r\nurl: \"x.com/VodafoneGroup\" OR\r\nurl: \"x.com/BTGroup\" OR\r\nurl: \"x.com/deutschetelekom\" OR\r\nurl: \"x.com/Telefonica\" OR\r\nurl: \"x.com/orange\" OR\r\nurl: \"x.com/SKtelecom\" OR\r\nurl: \"x.com/LGUplus\" OR\r\nurl: \"x.com/Singtel\" OR\r\nurl: \"x.com/Telstra\" OR\r\nurl: \"x.com/BestBuy\" OR\r\nurl: \"x.com/Walmart\" OR\r\nurl: \"x.com/Target\" OR\r\nurl: \"x.com/amazon\" OR\r\nurl: \"x.com/Apple\" OR\r\nurl: \"x.com/Tesco\" OR\r\nurl: \"x.com/MediaMarkt\" OR\r\nurl: \"x.com/CarrefourGroup\" OR\r\nurl: \"x.com/JBHiFi\" OR\r\nurl: \"x.com/RelianceDigital\"\r\n)"
+      ],
+      "details": {
+        "displayNameForWarning": "Keyword Query",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "TOPIC_QUERY",
+        "HAS_ALERT": false,
+        "INPUT_TYPE": "FREE_TEXT",
+        "EXCLUDE_IN_THEME_PREVIEW": "true",
+        "EXIST_FILTER": false,
+        "singleSelect": "true",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "STRING"
+      }
+    },
+    {
+      "dimensionName": "LISTENING_MEDIA_TYPE",
+      "filterType": "IN",
+      "values": [
+        "TWITTER"
+      ],
+      "details": {
+        "displayNameForWarning": "Source",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "LISTENING_MEDIA_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "SN_MESSAGE_TYPE",
+      "filterType": "IN",
+      "values": [
+        "2"
+      ],
+      "details": {
+        "displayNameForWarning": "Message Type",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "MESSAGE_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    }
+  ],
+  "groupBys": [
+    {
+      "heading": "ES_MESSAGE_ID_0",
+      "dimensionName": "ES_MESSAGE_ID",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "USER_SCREEN_NAME_CUSTOM_1",
+      "dimensionName": "USER_SCREEN_NAME_CUSTOM",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "PERMALINK_2",
+      "dimensionName": "PERMALINK",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    }
+  ],
+  "projections": [
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_0",
+      "measurementName": "MENTIONS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_COMMENTS_COUNT_1",
+      "measurementName": "COMMENTS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    }
+  ],
+  "projectionDecorations": [],
+  "projectionFilters": null,
+  "sorts": null,
+  "streamRequestInfo": null,
+  "additional": {
+    "Timezone": "Asia/Seoul",
+    "translateResponse": "false",
+    "fetchUnhealthyAccounts": "false",
+    "widgetId": "6a5dc29248f6062de940bfeb",
+    "exportInfo": "false",
+    "MARGIN": "false",
+    "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+    "engine": "LISTENING",
+    "showTotal": "true",
+    "chartType": "TABLE",
+    "showRolloverTrends": "false",
+    "TABULAR": "true"
+  },
+  "skipResolve": false,
+  "jsonResponse": false
+}

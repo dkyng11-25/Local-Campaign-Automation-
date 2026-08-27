@@ -1,0 +1,14 @@
+{
+  "data": {
+    "headings": [
+      "ES_MESSAGE_ID_0",
+      "FOLLOWERS_COUNT_1",
+      "M_SPRINKSIGHTS_FOLLOWERS_COUNT_MEASUREMENT_0",
+      "M_SPRINKSIGHTS_COMMENTS_COUNT_1",
+      "M_SPRINKSIGHTS_REPLY_COUNT_2",
+      "M_SPRINKSIGHTS_TWITTER_RETWEETS_3",
+      "M_SPRINKSIGHTS_MENTIONS_COUNT_4"
+    ]
+  },
+  "errors": []
+}

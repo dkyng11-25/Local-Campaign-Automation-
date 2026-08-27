@@ -1,0 +1,149 @@
+{
+  "report": "SPRINKSIGHTS",
+  "reportingEngine": "LISTENING",
+  "timeField": null,
+  "startTime": 1787724000000,
+  "endTime": 1787731200000,
+  "timeZone": "Asia/Seoul",
+  "page": 0,
+  "pageSize": 50,
+  "filters": [
+    {
+      "dimensionName": "QUERY",
+      "filterType": "IN",
+      "values": [
+        "  (\r\n    url: \"https://www.tiktok.com/@alainbuii/video\"\r\n    OR url: \"https://www.tiktok.com/@anwar/video\"\r\n    OR url: \"https://www.tiktok.com/@jessechrisss/video\"\r\n    OR url: \"https://www.tiktok.com/@thepacman82/video\"\r\n    OR url: \"https://www.tiktok.com/@pelenewell/video\"\r\n    OR url: \"https://www.tiktok.com/@hannahstocking/video\"\r\n    OR url: \"https://www.tiktok.com/@adamw/video\"\r\n    OR url: \"https://www.tiktok.com/@calebnatale/video\"\r\n    OR url: \"https://www.tiktok.com/@volny.pro/video\"\r\n    OR url: \"https://www.tiktok.com/@kristheorin/video\"\r\n    OR url: \"https://www.tiktok.com/@dylan.page/video\"\r\n    OR url: \"https://www.tiktok.com/@choejames/video\"\r\n    OR url: \"https://www.tiktok.com/@nathanlust/video\"\r\n    OR url: \"https://www.tiktok.com/@slava_makshun/video\"\r\n    OR url: \"https://www.tiktok.com/@happykelli/video\"\r\n    OR url: \"https://www.tiktok.com/@merkurialgirls/video\"\r\n    OR url: \"https://www.tiktok.com/@nellarose/video\"\r\n    OR url: \"https://www.tiktok.com/@lukehughesss/video\"\r\n    OR url: \"https://www.tiktok.com/@mybrotherab/video\"\r\n    OR url: \"https://www.tiktok.com/@avaraehirons/video\"\r\n    OR url: \"https://www.tiktok.com/@lydsbutler/video\"\r\n    OR url: \"https://www.tiktok.com/@irvo.11/video\"\r\n    OR url: \"https://www.tiktok.com/@woahpaolo/video\"\r\n    OR url: \"https://www.tiktok.com/@katyaklema/video\"\r\n    OR url: \"https://www.tiktok.com/@alessandro.marfella/video\"\r\n    OR url: \"https://www.tiktok.com/@jackremmington/video\"\r\n    OR url: \"https://www.tiktok.com/@ash_holme/video\"\r\n    OR url: \"https://www.tiktok.com/@joshryanx/video\"\r\n    OR url: \"https://www.tiktok.com/@theoshakes/video\"\r\n    OR url: \"https://www.tiktok.com/@madelineargy/video\"\r\n    OR url: \"https://www.tiktok.com/@imfemzz/video\"\r\n    OR url: \"https://www.tiktok.com/@maelys.ami/video\"\r\n    OR url: \"https://www.tiktok.com/@skd_production/video\"\r\n    OR url: \"https://www.tiktok.com/@eiixio_/video\"\r\n    OR url: \"https://www.tiktok.com/@jesuance/video\"\r\n    OR url: \"https://www.tiktok.com/@aypierre42/video\"\r\n    OR url: \"https://www.tiktok.com/@soukainasafar/video\"\r\n    OR url: \"https://www.tiktok.com/@inesbombshell/video\"\r\n    OR url: \"https://www.tiktok.com/@anaajalive/video\"\r\n    OR url: \"https://www.tiktok.com/@kevinbrunkhorst/video\"\r\n    OR url: \"https://www.tiktok.com/@bluebrywow/video\"\r\n    OR url: \"https://www.tiktok.com/@shirleys.miles/video\"\r\n    OR url: \"https://www.tiktok.com/@susufromthemoon/video\"\r\n    OR url: \"https://www.tiktok.com/@.hybrid.james/video\"\r\n    OR url: \"https://www.tiktok.com/@aleexweb/video\"\r\n    OR url: \"https://www.tiktok.com/@mariusfuxs/video\"\r\n    OR url: \"https://www.tiktok.com/@babybouge/video\"\r\n    OR url: \"https://www.tiktok.com/@ninsi_xx/video\"\r\n    OR url: \"https://www.tiktok.com/@dasistjay/video\"\r\n    OR url: \"https://www.tiktok.com/@nicoprod_/video\"\r\n    OR url: \"https://www.tiktok.com/@pius_saier/video\"\r\n    OR url: \"https://www.tiktok.com/@emil.luke/video\"\r\n    OR url: \"https://www.tiktok.com/@laratpp/video\"\r\n    OR url: \"https://www.tiktok.com/@transjoyboy/video\"\r\n    OR url: \"https://www.tiktok.com/@chou.iu/video\"\r\n    OR url: \"https://www.tiktok.com/@simplefamily.vt/video\"\r\n    OR url: \"https://www.tiktok.com/@nhatkycuameichan/video\"\r\n    OR url: \"https://www.tiktok.com/@thayqueo/video\"\r\n    OR url: \"https://www.tiktok.com/@emmale710/video\"\r\n    OR url: \"https://www.tiktok.com/@befansie/video\"\r\n    OR url: \"https://www.tiktok.com/@namphvvm/video\"\r\n    OR url: \"https://www.tiktok.com/@tu_hhao/video\"\r\n    OR url: \"https://www.tiktok.com/@tessyvalensiaa/video\"\r\n    OR url: \"https://www.tiktok.com/@leonleelx/video\"\r\n    OR url: \"https://www.tiktok.com/@leebyulbyul/video\"\r\n    OR url: \"https://www.tiktok.com/@raytyr/video\"\r\n    OR url: \"https://www.tiktok.com/@joycegchamoun/video\"\r\n    OR url: \"https://www.tiktok.com/@100.pixels/video\"\r\n    OR url: \"https://www.tiktok.com/@zozalajail/video\"\r\n    OR url: \"https://www.tiktok.com/@alghalyab/video\"\r\n    OR url: \"https://www.tiktok.com/@cedrabeauty/video\"\r\n    OR url: \"https://www.tiktok.com/@aaveerasinghmasson/video\"\r\n    OR url: \"https://www.tiktok.com/@shivhummm/video\"\r\n    OR url: \"https://www.tiktok.com/@rushaliyadavoffic/video\"\r\n    OR url: \"https://www.tiktok.com/@neysaassila/video\"\r\n    OR url: \"https://www.tiktok.com/@azizimusa/video\"\r\n    OR url: \"https://www.tiktok.com/@unnieqin/video\"\r\n    OR url: \"https://www.tiktok.com/@debbielow0511/video\"\r\n    OR url: \"https://www.tiktok.com/@lishaho/video\"\r\n    OR url: \"https://www.tiktok.com/@jaydenczx/video\"\r\n    OR url: \"https://www.tiktok.com/@evelynmarietta/video\"\r\n    OR url: \"https://www.tiktok.com/@jjiayii0602/video\"\r\n    OR url: \"https://www.tiktok.com/@timtiah/video\"\r\n    OR url: \"https://www.tiktok.com/@bellakuan/video\"\r\n    OR url: \"https://www.tiktok.com/@yang/video\"\r\n    OR url: \"https://www.tiktok.com/@qawiyaro/video\"\r\n    OR url: \"https://www.tiktok.com/@samliew1125_/video\"\r\n    OR url: \"https://www.tiktok.com/@msqiwiie/video\"\r\n    OR url: \"https://www.tiktok.com/@seonma_shin/video\"\r\n    OR url: \"https://www.tiktok.com/@bellaastillah_94/video\"\r\n    OR url: \"https://www.tiktok.com/@smoothbraingirly2001/video\"\r\n    OR url: \"https://www.tiktok.com/@kittieyiyi/video\"\r\n    OR url: \"https://www.tiktok.com/@zhysin/video\"\r\n    OR url: \"https://www.tiktok.com/@ameliath/video\"\r\n    OR url: \"https://www.tiktok.com/@caedonyeong_/video\"\r\n    OR url: \"https://www.tiktok.com/@allison.yee96/video\"\r\n    OR url: \"https://www.tiktok.com/@shalmaainaa/video\"\r\n    OR url: \"https://www.tiktok.com/@amylialoh/video\"\r\n    OR url: \"https://www.tiktok.com/@daryl.goat_/video\"\r\n    OR url: \"https://www.tiktok.com/@superthankky168/video\"\r\n    OR url: \"https://www.tiktok.com/@soiikiii/video\"\r\n    OR url: \"https://www.tiktok.com/@eu.eung/video\"\r\n    OR url: \"https://www.tiktok.com/@tah_and_friends/video\"\r\n    OR url: \"https://www.tiktok.com/@gamey.foto/video\"\r\n    OR url: \"https://www.tiktok.com/@aertha33/video\"\r\n    OR url: \"https://www.tiktok.com/@tapttapp/video\"\r\n    OR url: \"https://www.tiktok.com/@maeyasunsun/video\"\r\n    OR url: \"https://www.tiktok.com/@spk3241/video\"\r\n    OR url: \"https://www.tiktok.com/@babyjolystar/video\"\r\n    OR url: \"https://www.tiktok.com/@pun.darnswat/video\"\r\n    OR url: \"https://www.tiktok.com/@noonday12/video\"\r\n    OR url: \"https://www.tiktok.com/@earn.muien/video\"\r\n    OR url: \"https://www.tiktok.com/@nuttythanyalak/video\"\r\n    OR url: \"https://www.tiktok.com/@babyjingko/video\"\r\n    OR url: \"https://www.tiktok.com/@katsonyasingha/video\"\r\n    OR url: \"https://www.tiktok.com/@earnverapuchong/video\"\r\n    OR url: \"https://www.tiktok.com/@yoshirinra/video\"\r\n    OR url: \"https://www.tiktok.com/@fallinlovewithcutiecat/video\"\r\n    OR url: \"https://www.tiktok.com/@lexwasuwasu/video\"\r\n    OR url: \"https://www.tiktok.com/@zzdaozz/video\"\r\n    OR url: \"https://www.tiktok.com/@bankdn23/video\"\r\n    OR url: \"https://www.tiktok.com/@traganta/video\"\r\n    OR url: \"https://www.tiktok.com/@tiaembersic/video\"\r\n    OR url: \"https://www.tiktok.com/@ozbiljnetemereal/video\"\r\n    OR url: \"https://www.tiktok.com/@josip_banovac/video\"\r\n    OR url: \"https://www.tiktok.com/@zoranarr/video\"\r\n    OR url: \"https://www.tiktok.com/@gajahribernik/video\"\r\n    OR url: \"https://www.tiktok.com/@miajoske/video\"\r\n    OR url: \"https://www.tiktok.com/@mommademedothat/video\"\r\n    OR url: \"https://www.tiktok.com/@hun_jana/video\"\r\n    OR url: \"https://www.tiktok.com/@zllatnoribac/video\"\r\n    OR url: \"https://www.tiktok.com/@medoigra/video\"\r\n    OR url: \"https://www.tiktok.com/@stefansmc/video\"\r\n    OR url: \"https://www.tiktok.com/@jelenajelic87/video\"\r\n    OR url: \"https://www.tiktok.com/@patrick.kovjanic/video\"\r\n    OR url: \"https://www.tiktok.com/@mihaela.vasilevaa/video\"\r\n    OR url: \"https://www.tiktok.com/@antoniasarafova/video\"\r\n    OR url: \"https://www.tiktok.com/@bamby_gyal_/video\"\r\n    OR url: \"https://www.tiktok.com/@biaa.trs/video\"\r\n    OR url: \"https://www.tiktok.com/@mara.manoliu/video\"\r\n    OR url: \"https://www.tiktok.com/@its.boomerella/video\"\r\n    OR url: \"https://www.tiktok.com/@kevinmistryy/video\"\r\n    OR url: \"https://www.tiktok.com/@travelstoriespl/video\"\r\n    OR url: \"https://www.tiktok.com/@serafemm/video\"\r\n    OR url: \"https://www.tiktok.com/@onelife_photo/video\"\r\n    OR url: \"https://www.tiktok.com/@_daniharris/video\"\r\n    OR url: \"https://www.tiktok.com/@liv.purdon/video\"\r\n    OR url: \"https://www.tiktok.com/@getlostwithliam/video\"\r\n    OR url: \"https://www.tiktok.com/@hanbarrettnz/video\"\r\n    OR url: \"https://www.tiktok.com/@jessiekirk__/video\"\r\n    OR url: \"https://www.tiktok.com/@nesvankiai/video\"\r\n    OR url: \"https://www.tiktok.com/@emmatomson/video\"\r\n    OR url: \"https://www.tiktok.com/@alex.broggi/video\"\r\n    OR url: \"https://www.tiktok.com/@domenicaaq/video\"\r\n    OR url: \"https://www.tiktok.com/@joelroac/video\"\r\n    OR url: \"https://www.tiktok.com/@andrewoptics/video\"\r\n    OR url: \"https://www.tiktok.com/@franticframes/video\"\r\n    OR url: \"https://www.tiktok.com/@joshvfx/video\"\r\n    OR url: \"https://www.tiktok.com/@caitlinnlam/video\"\r\n    OR url: \"https://www.tiktok.com/@cogey/video\"\r\n    OR url: \"https://www.tiktok.com/@notsophiesilva/video\"\r\n    OR url: \"https://www.tiktok.com/@jimmypresnell/video\"\r\n    OR url: \"https://www.tiktok.com/@michaelkol/video\"\r\n    OR url: \"https://www.tiktok.com/@regina.makh/video\"\r\n    OR url: \"https://www.tiktok.com/@carlajuulie/video\"\r\n    OR url: \"https://www.tiktok.com/@_yaraboxing/video\"\r\n    OR url: \"https://www.tiktok.com/@laraalamri_/video\"\r\n    OR url: \"https://www.tiktok.com/@1idlb/video\"\r\n    OR url: \"https://www.tiktok.com/@.s.sh9/video\"\r\n    OR url: \"https://www.tiktok.com/@dvanilia/video\"\r\n    OR url: \"https://www.tiktok.com/@talatalatalatalata/video\"\r\n    OR url: \"https://www.tiktok.com/@shessonia/video\"\r\n    OR url: \"https://www.tiktok.com/@rawnaababunji/video\"\r\n    OR url: \"https://www.tiktok.com/@tala.alsabi/video\"\r\n    OR url: \"https://www.tiktok.com/@senan_arfaj/video\"\r\n    OR url: \"https://www.tiktok.com/@thunder_o/video\"\r\n    OR url: \"https://www.tiktok.com/@nawaf_3waji/video\"\r\n    OR url: \"https://www.tiktok.com/@ghalia.mahmoudi/video\"\r\n    OR url: \"https://www.tiktok.com/@faisxal33/video\"\r\n    OR url: \"https://www.tiktok.com/@amiriabdullah11/video\"\r\n    OR url: \"https://www.tiktok.com/@abadibra_/video\"\r\n    OR url: \"https://www.tiktok.com/@3mmar_m7/video\"\r\n    OR url: \"https://www.tiktok.com/@dinashijazi/video\"\r\n    OR url: \"https://www.tiktok.com/@veni.vidivictoria/video\"\r\n    OR url: \"https://www.tiktok.com/@jaadiee/video\"\r\n    OR url: \"https://www.tiktok.com/@frgretel/video\"\r\n    OR url: \"https://www.tiktok.com/@xxlsara/video\"\r\n    OR url: \"https://www.tiktok.com/@xfiibii/video\"\r\n    OR url: \"https://www.tiktok.com/@fregepaul/video\"\r\n    OR url: \"https://www.tiktok.com/@noelgoescrazy/video\"\r\n    OR url: \"https://www.tiktok.com/@le_wander/video\"\r\n    OR url: \"https://www.tiktok.com/@quocvietsocial/video\"\r\n    OR url: \"https://www.tiktok.com/@todidau/video\"\r\n    OR url: \"https://www.tiktok.com/@nvkhanhhh/video\"\r\n    OR url: \"https://www.tiktok.com/@khiemslayss/video\"\r\n    OR url: \"https://www.tiktok.com/@linhandanh/video\"\r\n    OR url: \"https://www.tiktok.com/@rebel_sweet/video\"\r\n  )"
+      ],
+      "details": {
+        "displayNameForWarning": "Keyword Query",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "TOPIC_QUERY",
+        "HAS_ALERT": false,
+        "INPUT_TYPE": "FREE_TEXT",
+        "EXCLUDE_IN_THEME_PREVIEW": "true",
+        "EXIST_FILTER": false,
+        "singleSelect": "true",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "STRING"
+      }
+    },
+    {
+      "dimensionName": "LISTENING_MEDIA_TYPE",
+      "filterType": "IN",
+      "values": [
+        "TIKTOK"
+      ],
+      "details": {
+        "displayNameForWarning": "Source",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "LISTENING_MEDIA_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "SN_MESSAGE_TYPE",
+      "filterType": "NIN",
+      "values": [
+        "401",
+        "402",
+        "413",
+        "414",
+        "502",
+        "501",
+        "521",
+        "509"
+      ],
+      "details": {
+        "displayNameForWarning": "Message Type",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "MESSAGE_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    }
+  ],
+  "groupBys": [
+    {
+      "heading": "ES_MESSAGE_ID_0",
+      "dimensionName": "ES_MESSAGE_ID",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "PERMALINK_1",
+      "dimensionName": "PERMALINK",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "FOLLOWERS_COUNT_2",
+      "dimensionName": "FOLLOWERS_COUNT",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    }
+  ],
+  "projections": [
+    {
+      "heading": "M_SPRINKSIGHTS_COMMENTS_COUNT_0",
+      "measurementName": "COMMENTS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_1",
+      "measurementName": "MENTIONS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    }
+  ],
+  "projectionDecorations": [],
+  "projectionFilters": null,
+  "sorts": [
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_1",
+      "order": "DESC"
+    }
+  ],
+  "streamRequestInfo": null,
+  "additional": {
+    "Timezone": "Asia/Seoul",
+    "translateResponse": "false",
+    "fetchUnhealthyAccounts": "false",
+    "widgetId": "6a5f5f0ef72d15191205282a",
+    "exportInfo": "false",
+    "MARGIN": "false",
+    "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+    "engine": "LISTENING",
+    "showTotal": "false",
+    "chartType": "TABLE",
+    "showRolloverTrends": "false",
+    "TABULAR": "true"
+  },
+  "skipResolve": false,
+  "jsonResponse": false
+}

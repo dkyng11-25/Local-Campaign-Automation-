@@ -1,0 +1,146 @@
+{
+  "report": "SPRINKSIGHTS",
+  "reportingEngine": "LISTENING",
+  "timeField": null,
+  "startTime": 1787724000000,
+  "endTime": 1787731200000,
+  "timeZone": "Asia/Seoul",
+  "page": 0,
+  "pageSize": 50,
+  "filters": [
+    {
+      "dimensionName": "QUERY",
+      "filterType": "IN",
+      "values": [
+        "author: \"alainbui\" OR author: \"anwar\" OR author: \"jessechrisss\" OR author: \"pelenewell\"\r\n    OR author: \"calebnatale\"\r\n    OR author: \"volny.pro\"\r\n    OR author: \"kristheorin\"\r\n    OR author: \"dylanpage.ning\"\r\n    OR author: \"jameschoe\"\r\n    OR author: \"itsnathanlust\"\r\n    OR author: \"slava_makshun\"\r\n    OR author: \"kelladactyl\"\r\n    OR author: \"yanabononi\"\r\n    OR author: \"sheismerkurial\"\r\n    OR author: \"nellarose\"\r\n    OR author: \"lucashughess_\"\r\n    OR author: \"alfiebuttle\"\r\n    OR author: \"avahirons\"\r\n    OR author: \"lydsbutler\"\r\n    OR author: \"woahpaolo\"\r\n    OR author: \"georgepabaker\"\r\n    OR author: \"katyaklema\"\r\n    OR author: \"alessandro.marfella\"\r\n    OR author: \"jackandjoel1\"\r\n    OR author: \"ashholme\"\r\n    OR author: \"joshryanx\"\r\n    OR author: \"maynard.sabellano\"\r\n    OR author: \"mancexplores\"\r\n    OR author: \"stuccigus\"\r\n    OR author: \"madelineargy\"\r\n    OR author: \"imfemz\"\r\n    OR author: \"maelys.ami\"\r\n    OR author: \"tonylopez.vfx\"\r\n    OR author: \"skd.archive00\"\r\n    OR author: \"eiixio_\"\r\n    OR author: \"jesusance\"\r\n    OR author: \"aypierre\"\r\n    OR author: \"soukaina.safaar\"\r\n    OR author: \"inesbombshell\"\r\n    OR author: \"anajaao\"\r\n    OR author: \"kevbrunkhorst\"\r\n    OR author: \"svengeitz\"\r\n    OR author: \"amelierunkel\"\r\n    OR author: \"shirleys.miles\"\r\n    OR author: \"susufromthemoon\"\r\n    OR author: \"hybrid.james\"\r\n    OR author: \"aleexweb\"\r\n    OR author: \"mariusfuxs\"\r\n    OR author: \"bougebby\"\r\n    OR author: \"ninsi_xx\"\r\n    OR author: \"dasistjayy\"\r\n    OR author: \"nicoprod\"\r\n    OR author: \"pius_saier\"\r\n    OR author: \"emil.luke\"\r\n    OR author: \"lara_tepper\"\r\n    OR author: \"transjoyboy\"\r\n    OR author: \"raffo_vfx\"\r\n    OR author: \"ceppeland\"\r\n    OR author: \"meichannnnn\"\r\n    OR author: \"lyiee\"\r\n    OR author: \"narl__22\"\r\n    OR author: \"maxknguyen\"\r\n    OR author: \"bellaclrs\"\r\n    OR author: \"harry.vghn\"\r\n    OR author: \"kanshue\"\r\n    OR author: \"joe.karir\"\r\n    OR author: \"leonleelx\"\r\n    OR author: \"leebyulbyul\"\r\n    OR author: \"raynold.tyr\"\r\n    OR author: \"sefa.keskinn\"\r\n    OR author: \"hilaryhyraa\"\r\n    OR author: \"zeybik\"\r\n    OR author: \"dilgebaylan\"\r\n    OR author: \"yagmursonverdi\"\r\n    OR author: \"kendimiboyuyorum\"\r\n    OR author: \"seaofmelis\"\r\n    OR author: \"gulsahesenturk\"\r\n    OR author: \"fundaguray1\"\r\n    OR author: \"busedgllu\"\r\n    OR author: \"ttunahanak\"\r\n    OR author: \"burakzzafer\"\r\n    OR author: \"dilaraoykuozdemir\"\r\n    OR author: \"aslikaya\"\r\n    OR author: \"alenayavas\"\r\n    OR author: \"gizemkivannc\"\r\n    OR author: \"joycegchamoun\"\r\n    OR author: \"thetwins8_\"\r\n    OR author: \"100.pixels\"\r\n    OR author: \"ramyhamdann\"\r\n    OR author: \"taraabujrab\"\r\n    OR author: \"971vlog\"\r\n    OR author: \"monihasbini\"\r\n    OR author: \"emaratinotraveler\"\r\n    OR author: \"das.rami\"\r\n    OR author: \"munzeerkhan_\"\r\n    OR author: \"pratikk.d\"\r\n    OR author: \"aveera.singh.masson\"\r\n    OR author: \"shivhumm\"\r\n    OR author: \"varun_annadani\"\r\n    OR author: \"rushaliyadavofc\"\r\n    OR author: \"shauryapratapsinha\"\r\n    OR author: \"aashimgulati\"\r\n    OR author: \"_kartikahlawat_\"\r\n    OR author: \"viibch\"\r\n    OR author: \"danieljsamuel_\"\r\n    OR author: \"aksharashivakumar\"\r\n    OR author: \"amarahcore\"\r\n    OR author: \"asmitapathik\"\r\n    OR author: \"aliachhiba\"\r\n    OR author: \"neysaassila\"\r\n    OR author: \"azizimusa_\"\r\n    OR author: \"sheqins\"\r\n    OR author: \"debbie.filmlife\"\r\n    OR author: \"lisha_ho\"\r\n    OR author: \"jaydenchong\"\r\n    OR author: \"evelynmarietta\"\r\n    OR author: \"jjiayii\"\r\n    OR author: \"jia.hui0602\"\r\n    OR author: \"timtiah\"\r\n    OR author: \"bellakuan\"\r\n    OR author: \"p.y\"\r\n    OR author: \"mindfreakxx_\"\r\n    OR author: \"qawiyaro\"\r\n    OR author: \"samliew_\"\r\n    OR author: \"msqiwiie\"\r\n    OR author: \"seonma_shin\"\r\n    OR author: \"bellaastillah\"\r\n    OR author: \"smoothbraingirly\"\r\n    OR author: \"kittieyiyi\"\r\n    OR author: \"zhysin\"\r\n    OR author: \"ameliath\"\r\n    OR author: \"caedonyeong\"\r\n    OR author: \"allison_phuise\"\r\n    OR author: \"shalmaainaa\"\r\n    OR author: \"amylialoh\"\r\n    OR author: \"daryl.goat_\"\r\n    OR author: \"superthankky\"\r\n    OR author: \"soiikiii\"\r\n    OR author: \"uanna.eung\"\r\n    OR author: \"tah_and_friends\"\r\n    OR author: \"ctrl.alt.review\"\r\n    OR author: \"aertha\"\r\n    OR author: \"tapttapp\"\r\n    OR author: \"maeyasunsun\"\r\n    OR author: \"spk3241_\"\r\n    OR author: \"babyjolystar\"\r\n    OR author: \"pun.darnswat\"\r\n    OR author: \"12natis\"\r\n    OR author: \"earn.muien\"\r\n    OR author: \"nutty.thanyalak\"\r\n    OR author: \"babyjingko\"\r\n    OR author: \"sonyasingha\"\r\n    OR author: \"sunflowava\"\r\n    OR author: \"ponpoom_568\"\r\n    OR author: \"k1tchyq\"\r\n    OR author: \"zzdaozz\"\r\n    OR author: \"bankdn23\"\r\n    OR author: \"traganta\"\r\n    OR author: \"tiaembersic\"\r\n    OR author: \"ozbiljne_teme\"\r\n    OR author: \"josip.banovac\"\r\n    OR author: \"zoraanar\"\r\n    OR author: \"gajahribernik\"\r\n    OR author: \"miajosifovic\"\r\n    OR author: \"mommademedothat\"\r\n    OR author: \"hun_jana\"\r\n    OR author: \"zlatnoribac\"\r\n    OR author: \"stefansmc\"\r\n    OR author: \"_jelenajelic\"\r\n    OR author: \"patrick.kovjanic\"\r\n    OR author: \"mihaela.vasileva\"\r\n    OR author: \"antoniasarafova\"\r\n    OR author: \"bamby_gyal_\"\r\n    OR author: \"biaa.trs\"\r\n    OR author: \"mara.manoliu\"\r\n    OR author: \"its.boomerella\"\r\n    OR author: \"kevinmistryy\"\r\n    OR author: \"travelstoriespl\"\r\n    OR author: \"paweljagiello_photography\"\r\n    OR author: \"serafemm\"\r\n    OR author: \"onelife_photostory\"\r\n    OR author: \"_daniharris\"\r\n    OR author: \"livpurdon\"\r\n    OR author: \"getlostwithliam\"\r\n    OR author: \"plainsundaee\"\r\n    OR author: \"stacymiddleton_\"\r\n    OR author: \"jting26\"\r\n    OR author: \"jacksholdies\"\r\n    OR author: \"jessmolina\"\r\n    OR author: \"jessiekirk_\"\r\n    OR author: \"nesvankiai\"\r\n    OR author: \"riinreitmann\"\r\n    OR author: \"emma.tomson\"\r\n    OR author: \"lisannakaro\"\r\n    OR author: \"moon.cytt\"\r\n    OR author: \"joelroac\"\r\n    OR author: \"franticframes\"\r\n    OR author: \"pvlkrknv\"\r\n    OR author: \"caitshouse\"\r\n    OR author: \"cogey\"\r\n    OR author: \"_sophiesilva_\"\r\n    OR author: \"michaelkolkowski\"\r\n    OR author: \"carlajuulie\"\r\n    OR author: \"_yaraboxing\"\r\n    OR author: \"laraalamri_\"\r\n    OR author: \"r011.s\"\r\n    OR author: \"hessah_alsudais\"\r\n    OR author: \"dvanilia\"\r\n    OR author: \"talaalakeel\"\r\n    OR author: \"shessonia\"\r\n    OR author: \"rawnaaba\"\r\n    OR author: \"tala.alsabi\"\r\n    OR author: \"senan_ar\"\r\n    OR author: \"raad_o\"\r\n    OR author: \"nawaf_3waji\"\r\n    OR author: \"ghalia.mahmoudi\"\r\n    OR author: \"_aaja1\"\r\n    OR author: \"ffaisaxl33\"\r\n    OR author: \"famiriabdullah11\"\r\n    OR author: \"abadibra\"\r\n    OR author: \"3mmar_m7\"\r\n    OR author: \"dinashijazii\"\r\n    OR author: \"deinlenny\"\r\n    OR author: \"veni.vidivictoria\"\r\n    OR author: \"jaadiee\"\r\n    OR author: \"frgretel\"\r\n    OR author: \"sararslan\"\r\n    OR author: \"xfibii\"\r\n    OR author: \"fregepaul\"\r\n    OR author: \"noel\"\r\n    OR author: \"silvanapuntoycoma\"\r\n    OR author: \"aaronjandette\"\r\n    OR author: \"jazzymmi\"\r\n    OR author: \"todidau\""
+      ],
+      "details": {
+        "displayNameForWarning": "Keyword Query",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "TOPIC_QUERY",
+        "HAS_ALERT": false,
+        "INPUT_TYPE": "FREE_TEXT",
+        "EXCLUDE_IN_THEME_PREVIEW": "true",
+        "EXIST_FILTER": false,
+        "singleSelect": "true",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "STRING"
+      }
+    },
+    {
+      "dimensionName": "LISTENING_MEDIA_TYPE",
+      "filterType": "IN",
+      "values": [
+        "INSTAGRAM"
+      ],
+      "details": {
+        "displayNameForWarning": "Source",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "LISTENING_MEDIA_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "SN_MESSAGE_TYPE",
+      "filterType": "NIN",
+      "values": [
+        "37",
+        "272",
+        "304",
+        "306",
+        "320"
+      ],
+      "details": {
+        "displayNameForWarning": "Message Type",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "MESSAGE_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    }
+  ],
+  "groupBys": [
+    {
+      "heading": "ES_MESSAGE_ID_0",
+      "dimensionName": "ES_MESSAGE_ID",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "PERMALINK_1",
+      "dimensionName": "PERMALINK",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "FOLLOWERS_COUNT_2",
+      "dimensionName": "FOLLOWERS_COUNT",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    }
+  ],
+  "projections": [
+    {
+      "heading": "M_SPRINKSIGHTS_COMMENTS_COUNT_0",
+      "measurementName": "COMMENTS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_1",
+      "measurementName": "MENTIONS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    }
+  ],
+  "projectionDecorations": [],
+  "projectionFilters": null,
+  "sorts": [
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_1",
+      "order": "DESC"
+    }
+  ],
+  "streamRequestInfo": null,
+  "additional": {
+    "Timezone": "Asia/Seoul",
+    "translateResponse": "false",
+    "fetchUnhealthyAccounts": "false",
+    "widgetId": "6a5f5f69f72d15191205d155",
+    "exportInfo": "false",
+    "MARGIN": "false",
+    "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+    "engine": "LISTENING",
+    "showTotal": "false",
+    "chartType": "TABLE",
+    "showRolloverTrends": "false",
+    "TABULAR": "true"
+  },
+  "skipResolve": false,
+  "jsonResponse": false
+}

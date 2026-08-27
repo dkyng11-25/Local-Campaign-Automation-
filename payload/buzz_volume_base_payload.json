@@ -1,0 +1,93 @@
+{
+    "report": "SPRINKSIGHTS",
+    "reportingEngine": "LISTENING",
+    "timeField": null,
+    "startTime": 1782831600000,
+    "endTime": 1785250799999,
+    "timeZone": "Asia/Seoul",
+    "page": 0,
+    "pageSize": 10,
+    "filters": [
+        {
+            "dimensionName": "LST_THEME",
+            "filterType": "IN",
+            "values": [
+                "6a3379d9a835c8780e964f86"
+            ],
+            "details": {
+                "displayNameForWarning": "Theme",
+                "USE_SNAPSHOT_VALUE": false,
+                "type": "DIMENSION",
+                "dF": true,
+                "OLD_DIM_NAME": "THEMES",
+                "HAS_ALERT": false,
+                "nameQueryLookupSupported": "true",
+                "DRILLDOWN": false,
+                "EXIST_FILTER": false,
+                "HAS_TOOLTIP_DATA": true,
+                "reportName": "SPRINKSIGHTS",
+                "reports": [
+                    "SPRINKSIGHTS"
+                ],
+                "dataType": "PICKLIST"
+            }
+        },
+        {
+            "dimensionName": "QUERY",
+            "filterType": "IN",
+            "values": [
+                "inUrl: WE3B_XB5cH4"
+            ],
+            "details": {
+                "displayNameForWarning": "Keyword Query",
+                "USE_SNAPSHOT_VALUE": false,
+                "type": "DIMENSION",
+                "OLD_DIM_NAME": "TOPIC_QUERY",
+                "HAS_ALERT": false,
+                "INPUT_TYPE": "FREE_TEXT",
+                "EXCLUDE_IN_THEME_PREVIEW": "true",
+                "EXIST_FILTER": false,
+                "singleSelect": "true",
+                "HAS_TOOLTIP_DATA": true,
+                "reportName": "SPRINKSIGHTS",
+                "reports": [
+                    "SPRINKSIGHTS"
+                ],
+                "dataType": "STRING"
+            }
+        }
+    ],
+    "groupBys": null,
+    "projections": [
+        {
+            "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_0",
+            "measurementName": "MENTIONS_COUNT",
+            "aggregateFunction": "SUM",
+            "details": {}
+        }
+    ],
+    "projectionDecorations": [
+        "CHANGE",
+        "PERCENTAGE_CHANGE"
+    ],
+    "projectionFilters": null,
+    "sorts": null,
+    "streamRequestInfo": null,
+    "additional": {
+        "Timezone": "Asia/Seoul",
+        "translateResponse": "false",
+        "fetchUnhealthyAccounts": "false",
+        "widgetId": "6a4f0e36e4827a7750a41f4d",
+        "exportInfo": "false",
+        "MARGIN": "false",
+        "engine": "LISTENING",
+        "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+        "chartType": "COUNTER",
+        "renderConfig": "{\"M_SPRINKSIGHTS_MENTIONS_COUNT_0\":{\"measurementFn\":\"SUM\",\"decorations\":[\"CHANGE\",\"PERCENTAGE_CHANGE\"]}}",
+        "showRolloverTrends": "false",
+        "projectionDecorations": "{\"M_SPRINKSIGHTS_MENTIONS_COUNT_0\":[\"CHANGE\",\"PERCENTAGE_CHANGE\"]}",
+        "ignoreEventBasedDataFilter": "true"
+    },
+    "skipResolve": false,
+    "jsonResponse": false
+}

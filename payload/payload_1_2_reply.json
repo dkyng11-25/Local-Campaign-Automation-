@@ -1,0 +1,183 @@
+{
+  "report": "SPRINKSIGHTS",
+  "reportingEngine": "LISTENING",
+  "timeField": null,
+  "startTime": 1787724000000,
+  "endTime": 1787731200000,
+  "timeZone": "Asia/Seoul",
+  "page": 0,
+  "pageSize": 50,
+  "filters": [
+    {
+      "dimensionName": "LISTENING_MEDIA_TYPE",
+      "filterType": "IN",
+      "values": [
+        "TWITTER"
+      ],
+      "details": {
+        "displayNameForWarning": "Source",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "LISTENING_MEDIA_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "SN_MESSAGE_TYPE",
+      "filterType": "IN",
+      "values": [
+        "303",
+        "305",
+        "36",
+        "311",
+        "4",
+        "2",
+        "45"
+      ],
+      "details": {
+        "displayNameForWarning": "Message Type",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "MESSAGE_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    },
+    {
+      "dimensionName": "LST_THEME",
+      "filterType": "IN",
+      "values": [
+        "6a3379d9a835c8780e964f86"
+      ],
+      "details": {
+        "displayNameForWarning": "Theme",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "dF": true,
+        "OLD_DIM_NAME": "THEMES",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "DRILLDOWN": false,
+        "EXIST_FILTER": false,
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    },
+    {
+      "dimensionName": "REPLY_COUNT",
+      "filterType": "GT",
+      "values": [
+        500
+      ],
+      "details": {
+        "displayNameForWarning": "Replies Count",
+        "aggregationLevel": "AGGREGATE",
+        "USE_SNAPSHOT_VALUE": false,
+        "name": "REPLY_COUNT",
+        "type": "DIMENSION",
+        "supportedMediaCSV": "INSTAGRAM,TWITTER,REDDIT,NEWS,BLOGS,FORUMS,VIDEOS",
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "HAS_ALERT": false,
+        "HAS_TOOLTIP_DATA": true,
+        "dataType": "NUMERIC"
+      }
+    }
+  ],
+  "groupBys": [
+    {
+      "heading": "ES_MESSAGE_ID_0",
+      "dimensionName": "ES_MESSAGE_ID",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "FOLLOWERS_COUNT_1",
+      "dimensionName": "FOLLOWERS_COUNT",
+      "groupType": "FIELD",
+      "details": {
+        "nestedGroupSort": true
+      },
+      "namedFilters": null
+    }
+  ],
+  "projections": [
+    {
+      "heading": "M_SPRINKSIGHTS_FOLLOWERS_COUNT_MEASUREMENT_0",
+      "measurementName": "FOLLOWERS_COUNT_MEASUREMENT",
+      "aggregateFunction": "MAX",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_COMMENTS_COUNT_1",
+      "measurementName": "COMMENTS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_REPLY_COUNT_2",
+      "measurementName": "REPLY_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_TWITTER_RETWEETS_3",
+      "measurementName": "TWITTER_RETWEETS",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_4",
+      "measurementName": "MENTIONS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    }
+  ],
+  "projectionDecorations": [],
+  "projectionFilters": null,
+  "sorts": [
+    {
+      "heading": "M_SPRINKSIGHTS_REPLY_COUNT_2",
+      "order": "DESC"
+    }
+  ],
+  "streamRequestInfo": null,
+  "additional": {
+    "Timezone": "Asia/Seoul",
+    "translateResponse": "false",
+    "fetchUnhealthyAccounts": "false",
+    "widgetId": "6a4c91f66478137bae9c2110",
+    "exportInfo": "false",
+    "MARGIN": "false",
+    "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+    "engine": "LISTENING",
+    "showTotal": "true",
+    "chartType": "TABLE",
+    "showRolloverTrends": "false",
+    "TABULAR": "true"
+  },
+  "skipResolve": false,
+  "jsonResponse": false
+}

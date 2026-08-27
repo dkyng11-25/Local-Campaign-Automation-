@@ -1,0 +1,196 @@
+{
+  "report": "SPRINKSIGHTS",
+  "reportingEngine": "LISTENING",
+  "timeField": null,
+  "startTime": 1787724000000,
+  "endTime": 1787731200000,
+  "timeZone": "Asia/Seoul",
+  "page": 0,
+  "pageSize": 50,
+  "filters": [
+    {
+      "dimensionName": "LISTENING_MEDIA_TYPE",
+      "filterType": "IN",
+      "values": [
+        "TWITTER"
+      ],
+      "details": {
+        "displayNameForWarning": "Source",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "LISTENING_MEDIA_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "SN_MESSAGE_TYPE",
+      "filterType": "IN",
+      "values": [
+        "2"
+      ],
+      "details": {
+        "displayNameForWarning": "Message Type",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "MESSAGE_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    },
+    {
+      "dimensionName": "TOPIC_TAGS",
+      "filterType": "IN",
+      "values": [
+        "[SLCC] SEA account_X",
+        "[SLCC] SEA account_IG",
+        "[SLCC] SEUK account_IG",
+        "[SLCC] SEUK account_X",
+        "[SLCC] SEG account_IG",
+        "[SLCC] SEG account_X",
+        "[SLCC] SEF account_IG",
+        "[SLCC] SEF account_X",
+        "[SLCC] SEDA account_IG",
+        "[SLCC] SEDA account_X",
+        "[SLCC] SEAU account_IG",
+        "[SLCC] SEAU account_X",
+        "[SLCC] SEIN account_IG",
+        "[SLCC] SEIN account_X",
+        "[SLCC] SEJ account_IG",
+        "[SLCC] SEJ account_X",
+        "[SLCC] SIEL account_IG",
+        "[SLCC] SIEL account_X",
+        "[SLCC] Korea account_IG",
+        "[SLCC] Korea account_X",
+        "[SLCC] TSE account_IG",
+        "[SLCC] SAVINA account_IG",
+        "[SLCC] SGE account_IG",
+        "[SLCC] SGE account_X",
+        "\n[SLCC] TSE account X"
+      ],
+      "details": {
+        "displayNameForWarning": "Topic Tag",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "TOPIC_TAG",
+        "HAS_ALERT": false,
+        "EXIST_FILTER": false,
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "QUERY",
+      "filterType": "IN",
+      "values": [
+        "(url: \"x.com/SamsungUS/\" OR url: \"twitter.com/SamsungUS/\" OR url: \"x.com/SamsungMobileUS/\" OR url: \"twitter.com/SamsungMobileUS/\" OR url: \"x.com/SamsungUK/\" OR url: \"twitter.com/SamsungUK/\" OR url: \"x.com/SamsungDE/\" OR url: \"twitter.com/SamsungDE/\" OR url: \"x.com/SamsungFR/\" OR url: \"twitter.com/SamsungFR/\" OR url: \"x.com/SamsungBrasil/\" OR url: \"twitter.com/SamsungBrasil/\" OR url: \"x.com/SamsungAU/\" OR url: \"twitter.com/SamsungAU/\" OR url: \"x.com/samsungID/\" OR url: \"twitter.com/samsungID/\" OR url: \"x.com/SamsungJPN/\" OR url: \"twitter.com/SamsungJPN/\" OR url: \"x.com/SamsungIndia/\" OR url: \"twitter.com/SamsungIndia/\" OR url: \"x.com/SamsungKorea/\" OR url: \"twitter.com/SamsungKorea/\" OR url: \"x.com/SamsungThailand/\" OR url: \"twitter.com/SamsungThailand/\" OR url: \"x.com/SamsungGulf/\" OR url: \"twitter.com/SamsungGulf/\") NOT (url:(\"twitter.com/samsungukraine\" OR \"x.com/samsungukraine\" OR \"twitter.com/SamsungAustin\" OR \"x.com/SamsungAustin\"))"
+      ],
+      "details": {
+        "displayNameForWarning": "Keyword Query",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "TOPIC_QUERY",
+        "HAS_ALERT": false,
+        "INPUT_TYPE": "FREE_TEXT",
+        "EXCLUDE_IN_THEME_PREVIEW": "true",
+        "EXIST_FILTER": false,
+        "singleSelect": "true",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "STRING"
+      }
+    }
+  ],
+  "groupBys": [
+    {
+      "heading": "ES_MESSAGE_ID_0",
+      "dimensionName": "ES_MESSAGE_ID",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "USER_SCREEN_NAME_CUSTOM_1",
+      "dimensionName": "USER_SCREEN_NAME_CUSTOM",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "SN_CREATED_TIME_2",
+      "dimensionName": "SN_CREATED_TIME",
+      "groupType": "DATE_HISTOGRAM",
+      "details": {
+        "isDateTypeDimension": true,
+        "interval": "1h"
+      },
+      "namedFilters": null
+    }
+  ],
+  "projections": [
+    {
+      "heading": "M_SPRINKSIGHTS_COMMENTS_COUNT_0",
+      "measurementName": "COMMENTS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_TWITTER_RETWEETS_1",
+      "measurementName": "TWITTER_RETWEETS",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_2",
+      "measurementName": "MENTIONS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    }
+  ],
+  "projectionDecorations": [],
+  "projectionFilters": null,
+  "sorts": [
+    {
+      "heading": "M_SPRINKSIGHTS_TWITTER_RETWEETS_1",
+      "order": "DESC"
+    }
+  ],
+  "streamRequestInfo": null,
+  "additional": {
+    "Timezone": "Asia/Seoul",
+    "translateResponse": "false",
+    "fetchUnhealthyAccounts": "false",
+    "widgetId": "6a4f0e05e4827a7750a3d547",
+    "exportInfo": "false",
+    "MARGIN": "false",
+    "engine": "LISTENING",
+    "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+    "showTotal": "true",
+    "chartType": "TABLE",
+    "showRolloverTrends": "false",
+    "TABULAR": "true"
+  },
+  "skipResolve": false,
+  "jsonResponse": false
+}

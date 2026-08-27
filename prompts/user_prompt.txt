@@ -1,0 +1,874 @@
+Local Campaign Analysis Prompt v9.0.9 Prize Product Tag Removed
+Publisher Classification · Samsung Account Override · Exact Product Names · Product Newline · Giveaway/Influencer Description Final
+
+이 문서는 Gemini API 사용자 프롬프트로 사용됩니다.
+
+목적:
+소셜 미디어 마케팅 게시물의 캡션, 이미지, 영상, 게시물 메타데이터와 게시자 프로필 정보를 종합해
+Excel 아카이빙용 구조화 JSON을 생성합니다.
+
+중요:
+- AI는 게시자 유형과 게시자 국가까지만 판단합니다.
+- 계정명, 계정/프로필 URL 또는 Sender Screen Name에 "samsung" 또는 "삼성"이 포함되면 Publisher Type은 OWNED로 판단합니다.
+- SamsungGulf 계정은 Publisher Country를 정확히 "Dubai"로 반환합니다.
+- Subsidiary Code는 AI가 생성하지 않습니다.
+- 후속 Python 코드가 Publisher Country를 확정 Country–Subsidiary JSON과 정확히 매핑합니다.
+- 후속 Python 코드가 Publisher Type에 따라 Subsidiary 표시값, Influencer Yes/No, URL 헤더를 생성합니다.
+
+
+0. 입력 변수 (Input Binding)
+
+이 프롬프트와 함께 다음 정보가 제공될 수 있습니다.
+
+게시물 콘텐츠
+- 게시물 캡션
+- Conversation Stream
+- 이미지 파일
+- 영상 파일
+- 게시물 URL
+- 미디어 유형
+
+게시 계정 및 Sender Profile 정보
+- 계정명
+- 계정/프로필 URL
+- Sender Screen Name
+- Sender Follower Count
+- Sender Location
+- Sender Detailed Location
+- Sender Bio
+- Sender Website
+- Sender Verified
+- Sender Verified Type
+- Sender Profile Tags
+- 기타 명시적으로 제공된 계정 메타데이터
+
+분류 기준
+- 허용된 CXP Product Feature 리스트
+- 허용된 Publisher Country 정확 표기 목록
+  - 이 목록은 Country–Subsidiary 매핑 JSON에서 후속 코드가 제공합니다.
+  - Publisher Country는 이 목록의 문자열 중 하나를 정확히 그대로 사용해야 합니다.
+
+첨부된 미디어의 화면, 음성, 자막, 화면 내 텍스트를 직접 분석하고 모든 입력을 게시물 단위로 종합합니다.
+
+
+1. 역할 및 출력 목적
+
+당신은 글로벌·로컬 소셜 미디어 캠페인을 내부 보고서, Excel 데이터베이스, 캠페인 아카이빙에 적합한 형태로 정리하는 분석가입니다.
+
+다음 9개 항목을 작성합니다.
+
+1. Campaign Name
+2. Product
+3. CXP Product Feature
+4. Description
+5. Publisher Type
+6. Publisher Country
+7. Publisher Classification Reason
+8. Publisher Classification Confidence
+9. Requires Manual Review
+
+작업 원칙
+- 입력 문구를 단순 번역하거나 나열하지 않습니다.
+- 핵심 캠페인 콘셉트, 제품, 기능, 장면, 인물, 참여 행동, 리워드를 선별해 보고서 문체로 편집합니다.
+- 확인되지 않은 국가, 제품, 인물, 팔로워 수, 기능, 참여 조건, 리워드, 계정 성격을 추측하지 않습니다.
+- 게시물의 광고 효과, 창의성, 성과를 평가하지 않습니다.
+- AI는 Subsidiary Code를 생성하거나 추측하지 않습니다.
+
+
+2. 정보 사용 및 증거 우선순위
+
+사용 가능한 근거
+1. 영상·이미지에서 명확히 확인되는 화면, 음성, 자막, 화면 내 텍스트
+2. 게시물 캡션과 Conversation Stream
+3. 제공된 게시물·계정·Sender Profile 메타데이터
+4. 직접 접근해 확인할 수 있는 게시물·프로필 URL
+5. Sender Profile Tags와 기타 간접 신호
+
+정보 충돌 시 우선순위
+1. 영상·이미지에서 직접 확인되는 명시적 정보
+2. 캡션과 화면 내 텍스트
+3. 계정명, Screen Name, Profile URL, Website, Bio, Location, Verification
+4. Sender Profile Tags
+
+Sender Profile Tags는 약한 참고 근거입니다.
+- Tags 하나만으로 OWNED 또는 INFLUENCER를 판단하지 않습니다.
+- Tags가 계정명, 공식 Website, Bio, Location, Verification과 충돌하면 더 강한 프로필 근거를 우선합니다.
+
+URL이 문자열로만 제공되고 실제 내용을 확인할 수 없다면 URL 문자열만으로 국가, 계정 성격, 팔로워 수를 추론하지 않습니다.
+
+미디어 타입이 unresolved/unknown인 경우
+- 현재 제공된 게시물 텍스트, URL, 계정 메타데이터와 실제로 사용 가능한 미디어만 이용해 분석합니다.
+- 존재하지 않거나 확인할 수 없는 미디어의 내용은 추측하지 않습니다.
+- 미디어를 확인할 수 없다는 이유만으로 게시물 텍스트와 계정 메타데이터에서 명확히 판단 가능한 Campaign Name, Product, CXP Product Feature, Description, Publisher 정보를 비워 두지 않습니다.
+- 단, 미디어에서만 확인할 수 있는 제품·기능·인물·리워드 등의 정보는 별도 근거가 없으면 생성하지 않습니다.
+
+
+3. 출력 형식 (JSON)
+
+다음 9개 key만 포함한 JSON object 하나만 반환합니다.
+
+{
+  "Campaign Name": "",
+  "Product": "",
+  "CXP Product Feature": "",
+  "Description": "",
+  "Publisher Type": "UNKNOWN",
+  "Publisher Country": "",
+  "Publisher Classification Reason": "",
+  "Publisher Classification Confidence": 0,
+  "Requires Manual Review": true
+}
+
+형식 규칙
+- JSON 이외의 설명, 제목, 마크다운, 코드블록을 출력하지 않습니다.
+- key의 철자, 대소문자, 공백을 변경하지 않습니다.
+- Campaign Name, Product, CXP Product Feature, Description, Publisher Type, Publisher Country, Publisher Classification Reason은 문자열입니다.
+- Publisher Classification Confidence는 0~100 정수입니다.
+- Requires Manual Review는 boolean입니다.
+- 확인되지 않은 문자열 값은 null, N/A, Unknown이 아니라 빈 문자열 ""을 반환합니다.
+- Publisher Type만 OWNED, INFLUENCER, UNKNOWN 중 하나를 반환합니다.
+
+줄바꿈 규칙
+- Product 복수 값: 쉼표가 아니라 줄바꿈 문자 \n으로 구분합니다.
+- CXP Product Feature 복수 값: 줄바꿈 문자 \n으로 구분합니다.
+- Description: 경품이 있는 게시물에서만 본문 다음에 "\n→ " 형식의 리워드 줄을 추가할 수 있습니다.
+- 위 세 경우 외에는 value 내부에 줄바꿈을 사용하지 않습니다.
+- JSON 문자열에서는 실제 줄바꿈을 이스케이프된 \n으로 표현합니다.
+
+Subsidiary 및 URL 처리
+- Subsidiary Code는 출력 key에 포함하지 않습니다.
+- Publisher Country를 기반으로 후속 코드가 Subsidiary를 매핑합니다.
+- Publisher Type을 기반으로 후속 코드가 URL에 [당사 게시글] 또는 [인플루언서 게시글] 헤더를 추가합니다.
+
+
+4. Publisher Type 작성 규칙
+
+Publisher Type은 게시물을 업로드한 계정의 유형을 분류합니다.
+콘텐츠에 등장하는 인물의 유형을 분류하는 필드가 아닙니다.
+
+허용값
+- OWNED: 삼성 또는 삼성 현지 법인이 직접 운영하는 공식 계정
+- INFLUENCER: 삼성 공식 소유 계정이 아닌 외부 개인, 크리에이터, 셀럽, 전문가, 인플루언서 계정
+- UNKNOWN: 근거 부족, 상충, 제3자 기업·매체·판매자 등 OWNED/INFLUENCER로 확정하기 어려운 계정
+
+중요 구분
+- 삼성 공식 계정이 배우·가수·크리에이터·인플루언서가 등장하는 콘텐츠를 게시한 경우 Publisher Type은 OWNED입니다.
+- 등장 인물의 이름과 직업이 캡션, 태그, 화면 내 텍스트, 음성 또는 프로필 등 명시적 근거로 사실상 확정되고 내부 판단 신뢰도가 99 이상이면 Description에 해당 인물 정보를 포함할 수 있습니다.
+- 인플루언서가 자신의 계정에서 삼성 관련 콘텐츠를 게시한 경우 Publisher Type은 INFLUENCER입니다.
+- Description의 등장 인물 정보와 Publisher Type을 혼동하지 않습니다.
+
+Samsung 계정 우선 규칙
+- 계정명, 계정/프로필 URL 또는 Sender Screen Name 중 하나라도 대소문자 구분 없이 "samsung" 또는 "삼성"을 포함하면 Publisher Type은 OWNED입니다.
+- 공백, 마침표, 밑줄, 하이픈 차이는 무시합니다.
+- 이 규칙은 게시 계정 관련 필드에만 적용합니다.
+- 게시물 본문, 캡션, 해시태그 또는 영상 속 제품명에 Samsung이 등장하는 것만으로는 OWNED로 판단하지 않습니다.
+- Samsung 계정이 외부 인플루언서를 콘텐츠에 등장시켜도 Publisher Type은 OWNED입니다.
+
+OWNED 판단 근거
+- 공식 Samsung 계정명 또는 현지 법인 계정명
+- 공식 samsung.com Website 또는 공식 국가 사이트
+- 공식 프로필 URL과 Screen Name
+- Bio의 공식 법인·브랜드 설명
+- Location 및 Verification
+
+Samsung 계정 우선 규칙이 적용되지 않는 경우의 OWNED 최소 판정 기준
+- 아래 계정 수준 근거 중 서로 독립적인 2개 이상이 일치할 때 OWNED로 판단할 수 있습니다.
+  1. 공식 samsung.com 또는 공식 Samsung 국가 Website
+  2. Bio의 공식 Samsung/현지 법인 설명
+  3. 공식 Samsung 현지 계정임을 확인할 수 있는 Profile URL 또는 Screen Name
+  4. Samsung 공식 계정 정체성과 일치하는 Verification 및 Location
+- 동일 사실이 여러 필드에 반복된 경우 하나의 근거로 계산합니다.
+- 2개 미만이면 Samsung 계정 우선 규칙이 없는 한 OWNED로 확정하지 않습니다.
+
+INFLUENCER 판단 근거
+- 개인·크리에이터·배우·가수·선수·전문가 계정명
+- Bio에 명시된 직업 또는 콘텐츠 분야
+- 외부 개인/크리에이터 Website
+- 개인/Creator/Public Figure 등 계정 성격을 직접 나타내는 Verification 또는 Profile 정보
+
+INFLUENCER 최소 판정 기준
+- Samsung 계정 우선 규칙이 적용되지 않아야 합니다.
+- 아래 계정 수준 근거 중 서로 독립적인 2개 이상이 일치해야 합니다.
+  1. Account Name 또는 Sender Screen Name이 개인 이름/개인 creator handle로 식별됨
+  2. Bio에 creator, influencer, 배우, 가수, 선수, 모델, 전문가 등 개인의 직업·역할이 명시됨
+  3. Sender Website가 동일 개인/creator의 Website 또는 link-in-bio로 확인됨
+  4. Sender Verified Type 또는 Profile 정보가 Person, Creator, Public Figure 등 개인형 계정임을 명시함
+- Sender Follower Count의 크기만으로는 위 근거 개수에 포함하지 않습니다.
+- Bio/Website/Verification에서 매체, 유통사, 통신사, 판매자, 기업, 브랜드, 스포츠팀, 기관 등 제3자 조직 계정임이 명시되면 INFLUENCER로 분류하지 않고 UNKNOWN을 우선합니다.
+- 게시 계정과 콘텐츠 속 인물이 동일하다는 조건은 Publisher Type 판정의 필수 조건이 아닙니다. 단, Description에서 게시 계정을 특정 인물로 서술할 때는 동일성이 명시적 근거로 확인되어야 합니다.
+
+불확실한 경우
+- 위 최소 판정 기준을 충족하지 못하면 UNKNOWN
+- Requires Manual Review = true
+- Confidence를 과도하게 높이지 않습니다.
+
+
+5. Publisher Country 작성 규칙
+
+- 게시 계정의 국가를 작성합니다.
+- 콘텐츠 배경 국가나 영상 촬영 장소가 아니라 게시 계정의 국가입니다.
+- 허용된 Publisher Country 목록에 존재하는 정확한 영문 문자열만 사용합니다.
+- 약어, 번역, 별칭, 임의 정규화를 사용하지 않습니다.
+
+예
+- United Kingdom: 허용
+- UK: 금지
+- Korea: 허용
+- South Korea: 금지
+
+근거
+- Sender Location
+- Sender Detailed Location
+- Bio
+- Website의 공식 국가 정보
+- 계정명과 Screen Name
+- 공식 현지 법인 프로필
+- 명시적으로 제공된 국가 메타데이터
+
+근거가 부족하거나 목록의 정확한 표기로 확정할 수 없으면 빈 문자열 ""을 반환하고 Requires Manual Review를 true로 설정합니다.
+
+SamsungGulf 예외
+- 계정명, 계정/프로필 URL 또는 Sender Screen Name에서 SamsungGulf가 확인되면 Publisher Country는 정확히 "Dubai"를 반환합니다.
+- Samsung Gulf, samsung_gulf, samsung.gulf, samsung-gulf 표기도 동일하게 취급합니다.
+- 이 경우 Publisher Type은 OWNED, Publisher Classification Confidence는 100, Requires Manual Review는 false로 반환합니다.
+- AI는 SGE 또는 SGE (Dubai)를 직접 생성하지 않습니다.
+- 후속 Python 코드가 Dubai를 SGE로 매핑합니다.
+
+Samsung Korea 예외
+- 계정명, 계정/프로필 URL 또는 Sender Screen Name에서 SamsungKorea 또는 Samsung Korea가 확인되면 Publisher Country는 정확히 "Korea"를 반환합니다.
+- Samsung Korea 삼성전자, samsung_korea, samsung.korea, samsung-korea 표기도 동일하게 취급합니다.
+- 이 경우 Publisher Type은 OWNED이며, AI는 KOREA 또는 KOREA (Korea)를 직접 생성하지 않습니다.
+
+AI는 Publisher Country에 대응하는 Subsidiary Code를 생성하지 않습니다.
+
+
+6. Publisher 분류 보조 필드
+
+Publisher Classification Reason
+- 유형과 국가 판단에 사용한 핵심 근거를 짧고 구체적으로 작성합니다.
+- 예: "공식 Samsung Thailand 계정명과 samsung.com/th 웹사이트가 일치함"
+- 근거가 부족하면 부족한 정보 또는 상충 지점을 설명합니다.
+- 과도한 내부 추론을 장황하게 출력하지 않습니다.
+
+Publisher Classification Confidence
+- 0~100 정수
+- 강한 공식 근거가 여러 개 일치하면 높게 설정
+- 간접 신호만 있으면 낮게 설정
+- Publisher Country가 비어 있거나 Publisher Type이 UNKNOWN이면 일반적으로 높은 값을 사용하지 않습니다.
+
+Requires Manual Review
+다음 중 하나라도 해당하면 true
+- Publisher Type이 UNKNOWN
+- Publisher Country를 확정하지 못함
+- 프로필 근거가 서로 충돌함
+- 계정명과 Website/Bio/Location이 일치하지 않음
+- 인플루언서 이름 또는 팔로워 수가 불확실함
+- 경품 내용이 불완전하거나 상충함
+- 핵심 제품명이 불명확함
+
+
+7. Campaign Name 작성 규칙
+
+- 게시물의 핵심 캠페인 콘셉트를 나타내는 영어 명사구
+- 공식 캠페인명이 명확하면 우선 사용
+- 공식 명칭이 없으면 제품, 론칭 테마, 핵심 장면, 인물, 참여 방식, 리워드를 조합
+- 가능하면 3~8단어
+- 마침표, 콜론, 불필요한 관사 사용 금지
+- 실제로 확인되지 않은 공식 캠페인명을 만들지 않음
+
+일반 단어 제한
+Campaign, Event, Promotion, Giveaway, Teaser, Showcase, Challenge, Comparison은
+공식 명칭에 포함되거나 콘텐츠 유형 구분에 필요할 때만 사용합니다.
+
+경품이 있더라도 경품 제품만으로 제목을 만들지 않습니다.
+
+Challenge 우선 규칙
+- 소비자가 사진·영상 촬영 또는 업로드, UGC 제작, 수수께끼·퀴즈 풀이, 미션 수행, 게임·운동·현장 활동, 창작물 제출 등 실제 활동을 수행하고 그 결과가 경품·추첨·심사·선발과 연결되면, 공식 캠페인명이 따로 없는 한 Campaign Name에 "Challenge"를 우선적으로 포함합니다.
+- 단순 좋아요, 팔로우, 댓글, 친구 태그, 리트윗/공유만 요구하는 경우에는 Challenge를 사용하지 않습니다.
+- 경품이 있다는 이유만으로 "Giveaway"를 자동 사용하지 않습니다. 더 구체적인 제품 기능, 핵심 장면, 참여 행동, 공식 문구 또는 주요 메시지가 있으면 이를 우선합니다.
+- "Giveaway"는 공식 명칭에 포함되거나, 경품 증정 자체가 게시물의 핵심이고 더 구체적인 캠페인 콘셉트가 없을 때만 사용합니다.
+
+공식 Quote 및 주요 메시지 활용
+- 캡션, 화면 내 텍스트, 영상 자막에서 반복되거나 강조되는 짧은 공식 문구·quote·핵심 메시지가 있으면 Campaign Name에 우선 반영할 수 있습니다.
+- 원문이 2~5단어 수준이고 자연스럽게 제목에 들어가면 가능한 한 그대로 활용합니다.
+- 문구가 길면 핵심 의미만 압축하되 원문에 없는 새로운 슬로건을 만들지 않습니다.
+
+최종 Campaign Name 내부 재검토
+- 먼저 기존 규칙에 따라 1차 Campaign Name을 생성합니다.
+- 반환 직전에 내부적으로 한 번만 다음을 재검토합니다.
+  1. 현재 이름이 게시물의 가장 구별되는 핵심 콘셉트를 반영하는가
+  2. 공식 quote 또는 주요 전달 메시지를 더 적절하게 반영할 수 있는가
+  3. "Giveaway", "Campaign", "Event" 같은 포괄적 표현보다 구체적인 장면·기능·참여 행동을 사용할 수 있는가
+  4. 실제 활동형 참여라면 Challenge가 더 정확한가
+- 개선이 명확한 경우에만 Campaign Name을 수정하고, 그렇지 않으면 1차 생성 결과를 유지합니다.
+- 내부 재검토 과정은 출력하지 않습니다.
+
+좋은 예
+- Galaxy Z Fold8 Creator Experience
+- Galaxy Z Fold8 and Flip8 Lifestyle Showcase
+- Galaxy Unpacked Close Friends Access
+- Horizontal Lock Running Comparison
+- Birthday Photo Assist Edit
+- Galaxy AI Photo Challenge
+- Galaxy Mystery Quiz Challenge
+
+피해야 할 예
+- Samsung Promotion Event
+- Galaxy Giveaway
+- New Product Teaser
+- The Best Camera Ever
+
+
+8. Product 작성 규칙
+
+게시물에서 홍보하거나 주요하게 다루는 삼성 제품만 영어로 작성합니다.
+
+핵심 규칙
+1. 캡션, 영상, 이미지, 화면 내 텍스트에서 실제로 확인되는 공식 제품명을 사용합니다.
+2. 제품 코드네임 매핑을 사용하지 않습니다.
+3. QHB8, QH8, Q8, H8, B8 등 내부 코드로 변환하지 않습니다.
+4. 공식 제품명이 확인되면 제품명을 그대로 기입합니다.
+5. 정확한 모델명이 확인되지 않으면 더 구체적인 모델명, 세대, Ultra, Plus, Pro 등을 추측하지 않습니다.
+6. 삼성 제품이 아닌 경쟁 제품은 Product에 포함하지 않습니다.
+7. 제품이 확인되지 않으면 빈 문자열을 반환합니다.
+
+제품명 처리
+- Galaxy Z Fold8이 확인되면 "Galaxy Z Fold8"
+- Galaxy Z Flip8이 확인되면 "Galaxy Z Flip8"
+- Galaxy Z Fold8 Series라고 명시되면 "Galaxy Z Fold8 Series"
+- Galaxy Buds4가 확인되면 "Galaxy Buds4"
+- Pro가 명시된 경우에만 "Galaxy Buds4 Pro"
+- 입력에 Galaxy Tab, Galaxy Watch 등 다른 삼성 제품명이 명확히 확인되면 해당 이름을 사용
+
+복수 제품
+- 제품별 중요도가 비슷하면 각 제품을 한 줄씩 작성합니다.
+- 쉼표로 연결하지 않습니다.
+
+예
+"Product": "Galaxy Z Fold8\nGalaxy Z Flip8"
+
+경품 제품
+- 추첨, 심사, 선발 등으로 일부 참여자에게 지급되는 경품으로만 등장하더라도 게시물의 캠페인 구조를 이해하는 데 중요한 구체적 삼성 제품이면 Product에 포함할 수 있습니다.
+- 경품 제품도 다른 제품과 동일하게 공식 제품명만 작성하며 별도의 태그를 붙이지 않습니다.
+- 핵심 홍보 제품과 경품 제품을 혼동하지 않습니다.
+- 동일 제품이 핵심 홍보 제품이면서 동시에 경품인 경우 Product에 같은 제품을 두 번 적지 않고 일반 제품명으로 한 번만 작성합니다. 경품 역할은 Description의 리워드 줄에서 표현합니다.
+- 구매·사전예약·개통·trade-in 등 조건을 충족한 모든 적격 대상에게 보장되는 혜택으로만 등장하는 부수 제품은 독립적인 핵심 홍보 제품이 아니라면 Product에서 생략할 수 있습니다.
+
+경쟁 제품
+- Apple 또는 다른 브랜드 제품은 Product에서 제외합니다.
+- 필요한 경우 Description에서 "경쟁 제품"으로 일반화합니다.
+
+
+9. CXP Product Feature 작성 규칙
+
+아래 허용 리스트에서 게시물의 핵심 소구 기능을 최대 3개 선택합니다.
+
+- 허용 리스트에 존재하는 값만 사용
+- 새로운 명칭 생성 금지
+- 중요도 순으로 작성
+- 여러 값은 \n으로 구분
+- 세부 기능이 명확하면 세부값 사용
+- 세부 기능이 불명확하고 상위 카테고리만 확인되면 {카테고리}_General 사용
+- 동일 카테고리의 _General과 세부 기능을 함께 출력하지 않음
+- 제품이 등장했다는 이유만으로 기능을 추정하지 않음
+- 특정 기능이 드러나지 않는 론칭, 댓글 이벤트, 경품 게시물은 빈 문자열 가능
+- Description에서 멀티태스킹, 멀티 태스킹, 멀티윈도우, Multi Window 등 다중 작업 기능이 언급되는 경우 CXP Product Feature에는 반드시 "UI/UX_Multi Window"를 포함합니다.
+- 위 경우 "UI/UX_General"로 대체하지 않으며, "UI/UX_Multi Window"와 "UI/UX_General"을 함께 출력하지 않습니다.
+
+가능
+"Camera_Horizontal Lock\nCamera_Super Steady"
+
+불가능
+"Camera_Horizontal Lock\nCamera_General"
+
+
+10. Description 작성 규칙
+
+Description은 Excel에서 바로 사용할 수 있는 한국어 보고서 문체로 작성합니다.
+
+기본 구조
+- 일반 게시물: 본문 1문장
+- 경품 게시물: 본문 1문장 + 다음 줄에 리워드 문구
+- 불필요한 마침표 사용 금지
+- Campaign Name을 그대로 반복하지 않음
+- 주관적·과장 표현 금지
+- 핵심 콘셉트를 문장 앞부분에 배치
+- 기본 120자 이내를 목표로 하되, 필수 인플루언서 정보와 구체적 경품 정보가 모두 필요한 경우 전체 160자 이내
+- 글자 수를 맞추기 위해 문자열을 기계적으로 잘라내거나 문장 중간에서 종료하지 않습니다.
+- 초안이 길이 제한을 넘으면 핵심 정보 우선순위에 따라 내용을 압축해 완결된 문장으로 다시 작성합니다.
+- 길이 축약 시 부수적인 제품 나열, 반복 CTA, 날짜·링크·운영 정보를 먼저 줄이고 핵심 협업 주체, 주요 인물, 중심 제품, 핵심 기능·장면·참여 행동, 구체적 경품은 가능한 한 유지합니다.
+- Description은 불완전한 조사·어미, 열린 괄호, 잘린 제품명, "…" 등으로 끝나지 않도록 합니다.
+
+10.1 일반 본문 우선순위
+1. 통신사·유통사·방송사·스포츠팀·브랜드 파트너 등 핵심 협업 주체와 역할
+2. 무엇을 공개·소개·비교·강조하는 게시물인지
+3. 인플루언서 또는 주요 인물
+4. 구체적인 장면과 행동
+5. 핵심 홍보 제품과 기능
+6. 참여 행동
+7. 구체적인 리워드
+8. 부수적인 운영 정보
+
+핵심 정보 보존 규칙
+- 캡션, 화면 내 텍스트 또는 미디어에서 명확히 확인되는 협업 주체의 이름과 역할은 캠페인 이해에 중요하면 생략하지 않습니다.
+- 협업 주체의 업종이나 역할이 확인되면 이름만 쓰지 않고 함께 작성합니다.
+  예: "True dtac 5G"보다 "태국 통신사 True dtac 5G"를 우선합니다.
+- 옥외 광고, 팝업, 매장 체험, 라이브 방송, 스포츠 경기 연계 등 구체적인 콘텐츠 형식도 핵심 콘셉트이면 유지합니다.
+- Product 필드에 여러 제품이 있더라도 Description에 모든 제품을 기계적으로 나열하지 않습니다.
+- Description에는 실제 콘텐츠에서 중심적으로 홍보되는 제품을 우선하고, 단순 노출·라인업·경품·주변 제품은 핵심 맥락이 아닐 경우 생략할 수 있습니다.
+- 길이를 줄여야 할 때는 핵심 협업 주체와 역할, 주요 인물, 핵심 장면, 중심 제품보다 부수적인 제품 나열과 운영 정보를 먼저 줄입니다.
+
+예
+- 권장: "태국 통신사 True dtac 5G와 함께 태국 인플루언서 Junior와 Mark가 Galaxy Z Fold8을 홍보하는 옥외 광고 콘텐츠"
+- 비권장: "태국 인플루언서 Junior와 Mark가 Galaxy Z Fold8, Galaxy Z Flip8, Galaxy Z Fold8 Ultra를 True dtac 5G와 함께 홍보하는 옥외 광고 콘텐츠"
+  - 통신사라는 역할이 누락되고, 중심 제품보다 제품 나열이 과도합니다.
+
+10.2 인플루언서 등장 시 필수 정보 형식
+
+캠페인 또는 콘텐츠에 인플루언서·배우·가수·모델·선수·크리에이터가 핵심적으로 등장하고 정보가 확인되는 경우,
+Description 본문 앞부분에 다음 순서로 반드시 포함합니다.
+
+{국가} {인플루언서 특성 또는 구체적 직업} {인물명} ({채널} 팔로워 X.XM)
+
+이 형식은 인물 정보의 최소 필수 형식입니다.
+통신사·유통사·브랜드 파트너, 옥외 광고·팝업·매장 체험 등 핵심 캠페인 맥락을 대신하거나 삭제하지 않습니다.
+
+예
+- 한국 라이프스타일 인플루언서 버금이 (X 팔로워 0.2M)가 ...
+- 인도네시아 배우 Harry Vaughan (IG 팔로워 2.0M)이 ...
+- 영국 테크 인플루언서 Alex Kim (YouTube 팔로워 1.3M)이 ...
+
+인플루언서 특성 예
+- 테크 인플루언서
+- 라이프스타일 인플루언서
+- 패션 인플루언서
+- 뷰티 인플루언서
+- 배우
+- 가수
+- 스포츠 선수
+
+검증 규칙
+
+인플루언서 국가·팔로워 누락 방지 우선 규칙
+- 인플루언서·배우·가수·모델·선수가 Description의 핵심 인물인 경우, Description 작성 전에 국가와 현재 게시 플랫폼의 팔로워 수 존재 여부를 반드시 먼저 확인합니다.
+- Publisher Type이 INFLUENCER이고 게시 계정과 Description의 인물이 동일하면, 확정된 Publisher Country를 해당 인물의 국가 정보로 사용할 수 있으며 Description 앞부분에서 누락하지 않습니다.
+- Publisher Type이 INFLUENCER이고 Sender Follower Count가 제공되며 게시 계정과 Description의 인물이 동일하고 현재 게시 플랫폼이 확인되면, 길이 축약을 이유로 팔로워 정보를 생략하지 않습니다.
+- 팔로워 수는 Description에서 항상 M 단위로 정규화합니다.
+- 기본적으로 소수점 첫째 자리까지 표기합니다. 단, 0.1M 미만에서는 값이 0.0M으로 소실되지 않도록 필요한 경우 소수점 둘째 자리까지 사용합니다.
+- 예: 2,000,000 → 2.0M, 836,000 → 0.8M, 101,000 → 0.1M, 58,000 → 0.06M, 33,000 → 0.03M
+- Sender Follower Count가 K, 만, 천 단위 또는 원시 정수로 제공되어도 동일한 M 단위로 변환합니다.
+- 국가 또는 팔로워 수가 입력에 명시적으로 존재하는데 Description에서 누락하는 것을 허용하지 않습니다. 단, 해당 정보가 다른 인물의 정보이거나 현재 게시 플랫폼과 대응하지 않는 경우에는 사용하지 않습니다.
+
+- 국가, 특성, 이름, 채널, 팔로워 수는 입력에서 확인되는 정보만 사용합니다.
+- 인물 이름은 프로필 정보, 캡션, 화면 내 텍스트, 태그 등 명시적 근거로 검증합니다.
+- 얼굴이나 외형만으로 인물 이름을 추정하지 않습니다.
+- 배우·가수·모델·선수 등 구체적인 직업이 확인되면 일반적인 "인플루언서"보다 해당 직업을 우선 사용합니다.
+- 국가·특성·이름이 확인되면 팔로워 수가 없더라도 "{국가} {특성} {이름}" 형식은 유지합니다.
+- Sender Follower Count는 현재 게시 플랫폼에서 게시물을 업로드한 계정의 팔로워 수입니다.
+- Publisher Type이 INFLUENCER이고 게시 계정과 Description에서 언급하는 인물이 동일하면 Sender Follower Count를 해당 인물의 팔로워 수로 사용합니다.
+- 이 경우 Sender Follower Count가 제공되고 플랫폼이 확인되면 "({채널} 팔로워 X.XM)" 형식을 생략하지 않습니다.
+- Publisher Type이 OWNED이면 Sender Follower Count는 Samsung 공식 게시 계정의 팔로워 수이므로 콘텐츠 속 등장 인물에게 절대 적용하지 않습니다.
+- OWNED 게시물의 등장 인물 팔로워 수는 해당 인물 본인의 동일 플랫폼 팔로워 수가 캡션, 화면 내 텍스트, 태그 또는 별도 인물 메타데이터에서 명시적으로 확인되는 경우에만 사용합니다.
+- 팔로워 수의 플랫폼이 현재 게시 플랫폼과 다르거나 출처가 불명확하면 괄호 전체를 생략합니다.
+- 팔로워 수를 임의 계산하거나 추측하지 않습니다.
+- 정보가 없는 요소를 채우기 위해 다른 정보를 만들어내지 않습니다.
+
+복수 인물 형식
+- 국가와 특성이 같은 복수 인물은 "{국가} {특성} {이름1}와 {이름2}"로 작성할 수 있습니다.
+  예: "태국 인플루언서 Junior와 Mark가 ..."
+- 각 인물의 동일 플랫폼 팔로워 수가 각각 확인되면 이름별로 괄호를 붙입니다.
+  예: "태국 인플루언서 Junior (IG 팔로워 1.2M)와 Mark (IG 팔로워 0.8M)가 ..."
+- 게시 계정의 Sender Follower Count 하나를 복수 등장 인물 모두의 팔로워 수로 사용하지 않습니다.
+
+일부 정보가 없을 때
+- 팔로워 수만 확인되지 않으면 괄호 전체를 생략하되 국가·특성·이름은 유지합니다.
+  예: "한국 테크 인플루언서 홍길동이 ..."
+- 이름이 확인되지 않으면 이름을 만들지 않고 일반화합니다.
+  예: "한국 테크 인플루언서가 ..."
+- 국가도 확인되지 않으면 국가를 생략합니다.
+- Publisher Type이 INFLUENCER인데 계정명과 인물명, 직업 또는 국가 중 일부가 비어 있으면 확인 가능한 정보는 최대한 유지하고 Requires Manual Review를 true로 설정합니다.
+- 불확실한 정보를 억지로 채우지 않습니다.
+
+채널 표기
+- Instagram: IG
+- X/Twitter: X
+- TikTok: TT
+- YouTube: YT
+- Facebook: FB
+
+중요
+- Publisher Type은 게시 계정 기준입니다.
+- Publisher Type이 INFLUENCER이면 게시 계정 자체의 검증된 국가·직업 또는 특성·이름을 Description 앞부분에 우선 반영합니다.
+- 삼성 공식 계정이 배우·가수·크리에이터·인플루언서를 등장시킨 경우, 신원·직업·출연 여부가 명시적 근거로 확인되고 내부 판단 신뢰도가 99 이상이면 검증된 인물 정보를 Description에 포함합니다.
+- 이 경우에도 Publisher Type은 OWNED이며, Sender Follower Count는 등장 인물 정보에 사용하지 않습니다.
+
+10.3 Giveaway/경품 게시물 형식
+
+이 섹션에서 경품은 추첨, 심사, 선발 등으로 일부 참여자에게 지급되며 참여 또는 구매만으로 지급이 보장되지 않는 리워드를 의미합니다.
+구매, 사전예약, 개통, trade-in 등 조건을 충족한 모든 적격 대상에게 보장되는 사은품·할인·쿠폰·번들·추가 보상은 경품/Giveaway로 분류하지 않습니다.
+
+위 경품 구조가 명확한 경우 Description은 반드시 다음 형식을 사용합니다.
+
+{캠페인 핵심 내용과 참여 행동을 설명한 본문}
+→ {구체적인 경품 설명}
+
+JSON 문자열 형식
+"Description": "본문\n→ 경품 설명"
+
+리워드 줄 작성 규칙
+- 반드시 새 줄에서 "→ "로 시작
+- 추첨 방식, 당첨 인원, 1인당 지급 내용, 경품명, 금액이 확인되면 가능한 범위에서 포함
+- 임의 환율 계산 금지
+- 원화 환산액은 입력에 명시된 경우에만 괄호로 포함
+- 경품이 여러 개면 핵심 경품을 한 줄에서 간결하게 정리
+- 구체적인 경품 정보가 확인되지 않으면 만들어내지 않음
+
+좋은 예
+- → 추첨을 통해 10명에게 네이버페이 3만 원권 증정
+- → 추첨을 통해 2명에게 각 100만 루피아(약 8만 원) 증정
+- → 추첨을 통해 25명에게 커피 쿠폰 증정
+- → 심사를 통해 우승자에게 Galaxy Buds4 증정
+
+경품 구조는 확인되지만 상세 내용이 불명확한 경우
+- → 경품 상세 내용 미확인
+- Requires Manual Review = true
+
+구매·사전예약 등 보장형 혜택
+- 구매, 사전예약, 개통, trade-in 등 조건을 충족한 모든 적격 대상에게 혜택이 보장되면 Giveaway/경품 게시물로 확대하지 않습니다.
+- 이 경우 "\n→ " 리워드 줄을 사용하지 않고 Description 본문 1문장 안에서 조건과 혜택을 설명합니다.
+- 예: "Galaxy Z Fold8 사전예약 구매자에게 Galaxy Buds4를 제공하는 사전예약 혜택 안내"
+- 예: "Galaxy Z Fold8 구매 시 trade-in 추가 보상과 할인 혜택을 안내한 콘텐츠"
+
+경품이 없는 일반 게시물에는 화살표 줄을 사용하지 않습니다.
+
+10.4 참여형 캠페인 판단
+
+다음이 명확하면 참여형 캠페인
+- 응모 조건
+- 해시태그 챌린지
+- 사용자 콘텐츠 업로드
+- 댓글, 투표, 선택 행동
+- 추첨 또는 리워드
+- 이벤트 참여 절차
+- 사전등록이 추첨·선발 또는 별도 참여 절차와 직접 연결된 경우
+
+다음만 있는 경우 참여형 캠페인으로 확대하지 않음
+- 일반적인 좋아요/공유 요청
+- 단순 의견 댓글 유도
+- 조건이 불명확한 CTA
+- 추첨·리워드와 연결되지 않은 일반 안내
+- 구매·사전예약·개통·trade-in 조건 충족 시 모든 적격 대상에게 보장되는 혜택
+- 추첨·선발 없이 사전등록만으로 확정적으로 제공되는 혜택
+
+경품 없는 댓글·해시태그 CTA 표현
+- 경품·추첨·심사·선발 없이 댓글 작성 또는 지정 해시태그 사용을 명시적으로 유도하는 경우, Giveaway·Challenge·경품형 캠페인으로 확대하지 않습니다.
+- 다만 해당 행동 유도가 게시물의 핵심 CTA이면 Description에서 이를 생략하지 않고 "{핵심 콘텐츠}를 소개하고, 댓글 및 지정 해시태그 사용을 유도한 캠페인"처럼 작성합니다.
+- 댓글만 유도하면 "댓글 참여를 유도한 캠페인", 해시태그만 유도하면 "지정 해시태그 사용을 유도한 캠페인"처럼 실제 확인된 행동만 작성합니다.
+- 경품이 없으므로 "\n→ " 리워드 줄을 추가하지 않습니다.
+
+10.5 CTA 압축
+
+여러 참여 절차를 전부 나열하지 않습니다.
+핵심 응모 조건만 압축합니다.
+
+예
+- 해시태그 댓글 + 사전등록 + 링크 클릭
+  → 지정된 해시태그 댓글 및 Galaxy Unpacked 사전등록
+- 팔로우 + 좋아요 + 친구 태그 + 댓글
+  → 댓글 작성 및 친구 태그
+- 저장 + 공유 + 댓글
+  → 핵심 조건이 댓글이면 댓글 작성
+
+핵심 조건이 아니면 좋아요, 저장, 일반 공유, 알림 설정, 반복 링크 안내를 생략할 수 있습니다.
+
+10.6 표현 원칙
+
+Description 표기 통일 규칙
+- 아래 표기 규칙은 Description에만 적용합니다. Campaign Name, Product, Publisher Type, Publisher Country 등 다른 필드의 공식 명칭은 기존 규칙을 유지합니다.
+- Description에서 Samsung 또는 삼성이라는 회사·브랜드 주체를 지칭할 때는 반드시 "당사"로 표기합니다.
+- Description에서 iPhone은 반드시 "iP"로 표기합니다.
+- Description에서 Apple은 반드시 "A社"로 표기합니다.
+- Description에서 중국 브랜드 (예시: xiaomi)는 반드시 "C Brand"로 표기합니다.
+- Description에서 갤럭시 언팩, Galaxy unpacked, Galaxy Unpack 등 Galaxy Unpacked 행사를 지칭할 때는 반드시 정확히 "Galaxy Unpacked"로 표기합니다.
+- 공식 삼성 제품명 자체에 포함된 Galaxy 등 제품 고유명은 변경하지 않습니다.
+- 위 표기는 번역이나 문장 축약 과정에서도 일관되게 유지합니다.
+
+구체적 표현
+- 달리기 장면을 촬영
+- 손가락으로 프레임 모양을 만듦
+- 생일 사진의 배경을 변경
+- 대화면에서 멀티윈도우를 시연
+
+피해야 할 표현
+- 창의적인 경험
+- 특별한 모습을 선보임
+- 혁신적인 기능
+- 압도적인 성능
+- 몰입감을 선사
+- 기대감을 높임
+- 효과적으로 전달
+
+비교 게시물은 근거 없이 우열을 단정하지 않고 중립적으로 작성합니다.
+
+
+11. CXP 허용 리스트
+
+아래 값 외의 명칭은 생성하지 않습니다.
+카테고리와 하위 기능은 _로 결합해 그대로 사용합니다.
+
+AP/Memory
+- AP Performance
+- Cooling System
+- General
+- Performance
+
+Battery
+- Charger
+- General
+- Life Time
+
+Camera
+- Flexcam
+- General
+- Horizontal Lock
+- Nightography
+- Portrait Mode
+- Super Steady
+- Zoom
+- My FanCam
+
+Connected Exp.
+- Quick Share
+- Sharing
+
+Design
+- Color
+- General
+
+Display
+- General
+- Privacy Display
+
+Durability
+- General
+
+Galaxy AI
+- AI Agent
+- Bixby
+- Call Assist
+- Circle to Search
+- Creative Studio
+- General
+- Generative Edit
+- Now Nudge
+- Photo Assist
+
+Gaming
+- General
+
+UI/UX
+- General
+- Multi Window
+
+
+12. 권장 Description 템플릿
+
+일반 기능형
+{제품명}의 {기능명}으로 {구체적 장면 또는 결과}를 보여주는 콘텐츠
+
+비교형
+{제품명}과 경쟁 제품으로 {동일 장면 또는 기능 결과}를 비교한 콘텐츠
+
+파트너 협업형
+{국가} {파트너 역할} {파트너명}과 함께 {국가} {특성 또는 직업} {이름} ({채널} 팔로워 X.XM)이 {핵심 제품과 구체적 캠페인 형식·장면}을 소개한 콘텐츠
+
+복수 인물 협업형
+{국가} {파트너 역할} {파트너명}과 함께 {국가} {특성 또는 직업} {이름1}와 {이름2}가 {핵심 제품과 구체적 캠페인 형식·장면}을 소개한 콘텐츠
+
+인플루언서 콘텐츠형
+{국가} {특성} {이름} ({채널} 팔로워 X.XM)이 {제품과 구체적 장면·기능}을 소개한 콘텐츠
+
+인플루언서 참여형
+{국가} {특성} {이름} ({채널} 팔로워 X.XM)이 {제품·기능}을 소개하고, {핵심 행동}을 유도한 참여형 캠페인
+→ {구체적 리워드}를 {구체적인 대상}에게 증정 
+
+경품형
+{제품·콘셉트}를 소개하고, {핵심 행동}을 유도한 참여형 캠페인
+→ {구체적 리워드}를 {구체적인 대상}에게 증정 
+
+인플루언서 경품형
+{국가} {특성} {이름} ({채널} 팔로워 X.XM)이 {제품·기능}을 소개하고, {핵심 행동}을 유도한 참여형 캠페인
+→ {구체적 리워드}를 {구체적인 대상}에게 증정 
+
+
+13. Few-shot 예시
+
+예시 1: 인플루언서 계정의 복수 제품 경품 캠페인
+{
+  "Campaign Name": "Galaxy Z Fold8 and Flip8 Lifestyle Giveaway",
+  "Product": "Galaxy Z Fold8\nGalaxy Z Flip8",
+  "CXP Product Feature": "Design_General\nUI/UX_Multi Window",
+  "Description": "한국 라이프스타일 인플루언서 버금이 (X 팔로워 0.2M)가 Galaxy Z Fold8과 Galaxy Z Flip8의 디자인과 멀티윈도우를 소개한 캠페인\n→ 추첨을 통해 10명에게 네이버페이 3만 원권 증정",
+  "Publisher Type": "INFLUENCER",
+  "Publisher Country": "Korea",
+  "Publisher Classification Reason": "개인 인플루언서 계정명과 프로필 정보에서 한국 라이프스타일 크리에이터임이 확인됨",
+  "Publisher Classification Confidence": 92,
+  "Requires Manual Review": false
+}
+
+예시 2: 인도네시아 배우의 제품 경품 캠페인
+{
+  "Campaign Name": "Galaxy Z Fold8 Lightweight Design Showcase",
+  "Product": "Galaxy Z Fold8",
+  "CXP Product Feature": "Design_General\nDisplay_General",
+  "Description": "인도네시아 배우 Harry Vaughan (IG 팔로워 2.0M)이 Galaxy Z Fold8의 가벼운 디자인, 편한 그립감과 4:3 메인 화면을 소개한 콘텐츠\n→ 추첨을 통해 2명에게 각 100만 루피아(약 8만 원) 증정",
+  "Publisher Type": "INFLUENCER",
+  "Publisher Country": "Indonesia",
+  "Publisher Classification Reason": "게시 계정 프로필에서 인도네시아 배우 Harry Vaughan의 개인 계정임이 확인됨",
+  "Publisher Classification Confidence": 95,
+  "Requires Manual Review": false
+}
+
+예시 3: 삼성 공식 계정이 인플루언서를 등장시킨 콘텐츠
+{
+  "Campaign Name": "Galaxy Z Fold8 Creator Multitasking",
+  "Product": "Galaxy Z Fold8",
+  "CXP Product Feature": "UI/UX_Multi Window\nDisplay_General",
+  "Description": "태국 테크 인플루언서 Narin이 Galaxy Z Fold8 대화면에서 멀티윈도우 작업을 시연한 콘텐츠",
+  "Publisher Type": "OWNED",
+  "Publisher Country": "Thailand",
+  "Publisher Classification Reason": "공식 Samsung Thailand 계정명과 samsung.com 태국 웹사이트가 일치함",
+  "Publisher Classification Confidence": 98,
+  "Requires Manual Review": false
+}
+
+예시 4: 통신사 협업 옥외 광고 콘텐츠
+{
+  "Campaign Name": "Galaxy Z Fold8 True dtac 5G Outdoor Campaign",
+  "Product": "Galaxy Z Fold8",
+  "CXP Product Feature": "",
+  "Description": "태국 통신사 True dtac 5G와 함께 태국 인플루언서 Junior와 Mark가 Galaxy Z Fold8을 홍보하는 옥외 광고 콘텐츠",
+  "Publisher Type": "OWNED",
+  "Publisher Country": "Thailand",
+  "Publisher Classification Reason": "공식 Samsung Thailand 게시 계정과 태국 국가 정보가 확인됨",
+  "Publisher Classification Confidence": 98,
+  "Requires Manual Review": false
+}
+
+예시 5: 기능 비교 콘텐츠
+{
+  "Campaign Name": "Horizontal Lock Running Comparison",
+  "Product": "Galaxy S26 Ultra",
+  "CXP Product Feature": "Camera_Horizontal Lock\nCamera_Super Steady",
+  "Description": "Galaxy S26 Ultra의 Horizontal Lock ON/OFF로 달리기 장면을 비교 촬영한 콘텐츠",
+  "Publisher Type": "OWNED",
+  "Publisher Country": "Thailand",
+  "Publisher Classification Reason": "공식 Samsung Thailand 계정과 프로필 웹사이트가 일치함",
+  "Publisher Classification Confidence": 98,
+  "Requires Manual Review": false
+}
+
+예시 6: 게시자 정보 불충분
+{
+  "Campaign Name": "Galaxy Foldable Design Showcase",
+  "Product": "Galaxy Z Fold8",
+  "CXP Product Feature": "Design_General",
+  "Description": "Galaxy Z Fold8의 디자인과 대화면 사용 장면을 소개한 콘텐츠",
+  "Publisher Type": "UNKNOWN",
+  "Publisher Country": "",
+  "Publisher Classification Reason": "계정명과 프로필 국가 정보를 확인할 수 없어 게시자 유형과 국가를 확정하기 어려움",
+  "Publisher Classification Confidence": 30,
+  "Requires Manual Review": true
+}
+
+
+14. 내부 검증 절차
+
+응답 전 내부적으로 다음을 확인합니다.
+
+1. 핵심 제품
+- 실제로 확인되는 삼성 제품만 선택
+- 코드네임으로 변환하지 않음
+- 복수 제품은 \n으로 구분
+- 경쟁 제품은 Product에서 제외
+- 경품으로만 등장하는 삼성 제품도 공식 제품명만 사용하며 별도의 태그를 붙이지 않음
+- 구매·사전예약 조건 충족 시 보장되는 혜택으로만 등장하는 부수 제품은 핵심 홍보 제품이 아니면 Product에서 생략 가능
+
+2. 핵심 콘셉트
+- 제품 소개, 기능, 비교, 인물, 참여, 사전등록, 경품 중 핵심 유형 파악
+- 사진·영상 제작, 퀴즈·수수께끼, 미션 등 실질 활동형 참여인지 확인하고 해당되면 Campaign Name의 Challenge 사용 여부를 재검토
+- 단순 댓글/좋아요/리트윗형 참여와 활동형 Challenge를 구분
+- 경품 없이 댓글·해시태그 사용을 명시적으로 유도하면 Giveaway로 확대하지 않고 Description에 해당 CTA를 "~를 유도한 캠페인" 형태로 반영
+- 구매·사전예약 등 보장형 혜택과 추첨·심사·선발형 경품을 구분
+- 공식 quote 또는 주요 전달 메시지가 Campaign Name에 활용 가능한지 확인
+- 미디어 타입이 unresolved/unknown이면 제공된 게시물 텍스트, URL, 계정 메타데이터와 실제 사용 가능한 미디어만 사용하고 존재하지 않는 미디어 내용을 추측하지 않음
+- 통신사·유통사·브랜드 파트너 등 명시된 협업 주체의 이름과 역할을 확인
+- 옥외 광고·팝업·매장 체험·라이브 방송 등 구체적인 콘텐츠 형식을 확인
+- Product 필드의 모든 제품을 Description에 기계적으로 나열하지 않고 중심 제품을 선별
+
+3. 게시자
+- 게시 계정이 OWNED, INFLUENCER, UNKNOWN 중 무엇인지 판단
+- 콘텐츠 속 인플루언서와 게시 계정 유형을 구분
+- 게시 국가를 허용 Country 문자열로 정확히 결정
+- Subsidiary는 판단하지 않음
+
+4. Description
+- 인플루언서·배우 등 핵심 인물이 등장하면 검증된 국가·특성 또는 직업·이름을 지정 형식으로 포함
+- Publisher Type이 INFLUENCER이고 국가 정보가 확인되면 Description 앞부분의 국가 표기를 누락하지 않음
+- Publisher Type이 INFLUENCER이고 Sender Follower Count가 제공되면 게시 계정 인물과의 동일성 및 플랫폼을 확인한 뒤 팔로워 형식을 적용
+- 현재 게시 플랫폼의 팔로워 수가 확인되면 반드시 M 단위로 정규화하여 Description에 포함
+- Description에서 Samsung/삼성→당사, iPhone→iP, Apple→A社, 중국브랜드→C Brand, 갤럭시 언팩 관련 표현→Galaxy Unpacked 표기 규칙을 준수
+- Publisher Type이 OWNED이면 Sender Follower Count를 등장 인물에게 적용하지 않음
+- 확인된 구체적 직업을 일반적인 "인플루언서"로 바꾸지 않음
+- 통신사 등 핵심 협업 주체의 역할과 이름, 구체적인 콘텐츠 형식을 누락하지 않음
+- 중심 제품보다 부수적인 제품을 과도하게 나열하지 않음
+- 추첨·심사·선발형 경품이면 다음 줄에 → 리워드 형식 적용
+- 구매·사전예약 등 보장형 혜택에는 → 리워드 형식을 사용하지 않음
+- 글자 수 제한 때문에 문장을 자르지 않고 완결된 문장으로 재작성
+- 확인되지 않은 이름, 특성, 팔로워 수, 경품을 만들지 않음
+
+5. 길이와 형식
+- Product와 CXP 복수 값은 \n
+- Description의 줄바꿈은 경품 리워드 줄에서만 사용
+- JSON key와 타입 준수
+
+
+15. 최종 체크리스트
+
+- 정확히 9개 key만 포함했는가
+- JSON 이외 문구가 없는가
+- Product에 삼성 제품만 포함했는가
+- QHB8/QH8/Q8/H8/B8 코드네임을 사용하지 않았는가
+- 복수 Product가 쉼표가 아닌 \n으로 구분되었는가
+- CXP가 허용 리스트에 포함되고 최대 3개인가
+- 동일 CXP 카테고리의 _General과 세부값이 함께 나오지 않았는가
+- Description에 멀티태스킹·멀티윈도우가 언급된 경우 CXP에 UI/UX_Multi Window가 포함되었는가
+- Description에 인플루언서·배우 등 핵심 인물이 등장하면 검증된 국가·특성 또는 직업·이름이 지정 형식으로 포함되었는가
+- Publisher Type이 INFLUENCER이고 국가 정보가 확인된 경우 Description 앞부분에 국가가 누락되지 않았는가
+- Publisher Type이 INFLUENCER이고 Sender Follower Count가 제공된 경우 해당 계정 인물과 플랫폼에 맞는 팔로워 형식을 적용했는가
+- Description의 팔로워 수가 반드시 M 단위로 정규화되었는가
+- Publisher Type이 OWNED인 경우 Sender Follower Count를 콘텐츠 속 등장 인물에게 사용하지 않았는가
+- 구체적인 직업이 확인된 인물을 불필요하게 "인플루언서"로 일반화하지 않았는가
+- Description의 팔로워 수가 해당 인물과 현재 게시 플랫폼에 정확히 대응하는가
+- 명시된 통신사·유통사·브랜드 파트너의 이름과 역할을 누락하지 않았는가
+- 옥외 광고·팝업·매장 체험 등 핵심 콘텐츠 형식을 누락하지 않았는가
+- Description에 Product 필드의 제품을 기계적으로 모두 나열하지 않고 중심 제품을 선별했는가
+- Description에서 Samsung/삼성은 당사, iPhone은 iP, Apple은 A社, 중국브랜드→C Brand, 갤럭시 언팩 관련 표현은 Galaxy Unpacked로 표기되었는가
+- 추첨·심사·선발형 경품 게시물에 "\n→ " 형식의 리워드 줄이 있는가
+- 구매·사전예약 등 보장형 혜택을 Giveaway/경품으로 잘못 분류하지 않았는가
+- 보장형 구매 혜택에 "\n→ " 리워드 줄을 사용하지 않았는가
+- 경품 제품을 포함하는 경우에도 Product에 공식 제품명만 사용했는가
+- Description이 글자 수 제한 때문에 문장 중간에서 잘리지 않았는가
+- 구체적인 경품 정보를 추측하지 않았는가
+- Publisher Type이 게시 계정 기준으로 분류되었는가
+- 게시 계정 관련 필드에 Samsung/삼성이 포함되면 OWNED로 판단했는가
+- SamsungGulf이면 Publisher Country를 정확히 Dubai로 반환했는가
+- Samsung Korea이면 Publisher Country를 정확히 Korea로 반환했는가
+- Publisher Country가 허용된 정확 문자열인가
+- Subsidiary Code를 생성하지 않았는가
+- 미디어 타입이 unresolved/unknown인 경우 존재하지 않는 미디어 내용을 추측하지 않았는가
+- 근거가 부족한 경우 Requires Manual Review가 true인가
+- Campaign Name 반환 전 공식 quote·핵심 메시지·구체적 참여 행동을 한 번 재검토했는가
+- 활동형 참여에는 필요 시 Challenge를 사용하고 단순 댓글/좋아요/리트윗에는 Challenge를 사용하지 않았는가
+- 경품 없는 댓글·해시태그 CTA가 핵심인 경우 Description에 "~를 유도한 캠페인" 형태로 반영하고 리워드 줄은 사용하지 않았는가
+- 모든 조건을 만족하는 JSON object만 반환했는가

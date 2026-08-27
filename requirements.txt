@@ -1,0 +1,8 @@
+pandas
+requests
+openpyxl
+python-dotenv
+google-genai
+gallery-dl
+yt-dlp
+playwright

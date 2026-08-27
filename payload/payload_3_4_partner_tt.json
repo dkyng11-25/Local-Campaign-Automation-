@@ -1,0 +1,140 @@
+{
+  "report": "SPRINKSIGHTS",
+  "reportingEngine": "LISTENING",
+  "timeField": null,
+  "startTime": 1787724000000,
+  "endTime": 1787731200000,
+  "timeZone": "Asia/Seoul",
+  "page": 0,
+  "pageSize": 50,
+  "filters": [
+    {
+      "dimensionName": "QUERY",
+      "filterType": "IN",
+      "values": [
+        "\r\nauthor: (\r\n\"manutd\" OR\r\n\"gentlemonster_official\" OR\r\n\"warbyparker\" OR\r\n\"prada\" OR\r\n\"netflix\" OR\r\n\"ibm\" OR\r\n\"cisco\" OR\r\n\"verizon\" OR\r\n\"eeuk\" OR\r\n\"virginmedia\" OR\r\n\"currys\" OR\r\n\"argos\" OR\r\n\"zainkuwait\" OR\r\n\"ooredooqatar\" OR\r\n\"mediamarkt_tr\" OR\r\n\"turkcell\" OR\r\n\"docomo.official\" OR\r\n\"att\" OR\r\n\"tmobile\" OR\r\n\"rogers\" OR\r\n\"bellcanada\" OR\r\n\"Vodafone\" OR\r\n\"bt_uk\" OR\r\n\"deutschetelekom\" OR\r\n\"telefonica\" OR\r\n\"orange\" OR\r\n\"lguplus_\" OR\r\n\"singtel\" OR\r\n\"telstra\" OR\r\n\"bestbuy\" OR\r\n\"walmart\" OR\r\n\"target\" OR\r\n\"amazon\" OR\r\n\"apple\" OR\r\n\"tesco\" OR\r\n\"fnac_officiel\" OR\r\n\"carrefourfrance\" OR\r\n\"jbhifi\"\r\n)\r\nOR\r\n(\r\ninUrl: \"tiktok.com/@manutd/\" OR\r\ninUrl: \"tiktok.com/@gentlemonster_official/\" OR\r\ninUrl: \"tiktok.com/@warbyparker/\" OR\r\ninUrl: \"tiktok.com/@prada/\" OR\r\ninUrl: \"tiktok.com/@netflix/\" OR\r\ninUrl: \"tiktok.com/@ibm/\" OR\r\ninUrl: \"tiktok.com/@cisco/\" OR\r\ninUrl: \"tiktok.com/@verizon/\" OR\r\ninUrl: \"tiktok.com/@eeuk/\" OR\r\ninUrl: \"tiktok.com/@virginmedia/\" OR\r\ninUrl: \"tiktok.com/@currys/\" OR\r\ninUrl: \"tiktok.com/@argos/\" OR\r\ninUrl: \"tiktok.com/@zainkuwait/\" OR\r\ninUrl: \"tiktok.com/@ooredooqatar/\" OR\r\ninUrl: \"tiktok.com/@mediamarkt_tr/\" OR\r\ninUrl: \"tiktok.com/@turkcell/\" OR\r\ninUrl: \"tiktok.com/@docomo.official/\" OR\r\ninUrl: \"tiktok.com/@att/\" OR\r\ninUrl: \"tiktok.com/@tmobile/\" OR\r\ninUrl: \"tiktok.com/@rogers/\" OR\r\ninUrl: \"tiktok.com/@bellcanada/\" OR\r\ninUrl: \"tiktok.com/@vodafone/\" OR\r\ninUrl: \"tiktok.com/@bt_uk/\" OR\r\ninUrl: \"tiktok.com/@deutschetelekom/\" OR\r\ninUrl: \"tiktok.com/@telefonica/\" OR\r\ninUrl: \"tiktok.com/@orange/\" OR\r\ninUrl: \"tiktok.com/@lguplus_/\" OR\r\ninUrl: \"tiktok.com/@singtel/\" OR\r\ninUrl: \"tiktok.com/@telstra/\" OR\r\ninUrl: \"tiktok.com/@bestbuy/\" OR\r\ninUrl: \"tiktok.com/@walmart/\" OR\r\ninUrl: \"tiktok.com/@target/\" OR\r\ninUrl: \"tiktok.com/@amazon/\" OR\r\ninUrl: \"tiktok.com/@apple/\" OR\r\ninUrl: \"tiktok.com/@tesco/\" OR\r\ninUrl: \"tiktok.com/@fnac_officiel/\" OR\r\ninUrl: \"tiktok.com/@carrefourfrance/\" OR\r\ninUrl: \"tiktok.com/@jbhifi/\"\r\n)"
+      ],
+      "details": {
+        "displayNameForWarning": "Keyword Query",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "TOPIC_QUERY",
+        "HAS_ALERT": false,
+        "INPUT_TYPE": "FREE_TEXT",
+        "EXCLUDE_IN_THEME_PREVIEW": "true",
+        "EXIST_FILTER": false,
+        "singleSelect": "true",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "STRING"
+      }
+    },
+    {
+      "dimensionName": "LISTENING_MEDIA_TYPE",
+      "filterType": "IN",
+      "values": [
+        "TIKTOK"
+      ],
+      "details": {
+        "displayNameForWarning": "Source",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "LISTENING_MEDIA_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "SN_MESSAGE_TYPE",
+      "filterType": "IN",
+      "values": [
+        "393",
+        "385",
+        "495",
+        "522"
+      ],
+      "details": {
+        "displayNameForWarning": "Message Type",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "MESSAGE_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    }
+  ],
+  "groupBys": [
+    {
+      "heading": "ES_MESSAGE_ID_0",
+      "dimensionName": "ES_MESSAGE_ID",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "USER_SCREEN_NAME_CUSTOM_1",
+      "dimensionName": "USER_SCREEN_NAME_CUSTOM",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "PERMALINK_2",
+      "dimensionName": "PERMALINK",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    }
+  ],
+  "projections": [
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_0",
+      "measurementName": "MENTIONS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_COMMENTS_COUNT_1",
+      "measurementName": "COMMENTS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    }
+  ],
+  "projectionDecorations": [],
+  "projectionFilters": null,
+  "sorts": null,
+  "streamRequestInfo": null,
+  "additional": {
+    "Timezone": "Asia/Seoul",
+    "translateResponse": "false",
+    "fetchUnhealthyAccounts": "false",
+    "widgetId": "6a5dd13a48f6062de9537cdd",
+    "exportInfo": "false",
+    "MARGIN": "false",
+    "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+    "engine": "LISTENING",
+    "showTotal": "true",
+    "chartType": "TABLE",
+    "showRolloverTrends": "false",
+    "TABULAR": "true"
+  },
+  "skipResolve": false,
+  "jsonResponse": false
+}

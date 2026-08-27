@@ -1,0 +1,139 @@
+{
+  "report": "SPRINKSIGHTS",
+  "reportingEngine": "LISTENING",
+  "timeField": null,
+  "startTime": 1787724000000,
+  "endTime": 1787731200000,
+  "timeZone": "Asia/Seoul",
+  "page": 0,
+  "pageSize": 50,
+  "filters": [
+    {
+      "dimensionName": "QUERY",
+      "filterType": "IN",
+      "values": [
+        "(\r\n  (author: \"qualcomm\" OR inUrl: \"instagram.com/qualcomm\")\r\n  OR (author: \"wes_brown24\" OR inUrl: \"instagram.com/wes_brown24\")\r\n  OR (author: \"manchesterunited\" OR inUrl: \"instagram.com/manchesterunited\")\r\n  OR (author: \"gentlemonster\" OR inUrl: \"instagram.com/gentlemonster\")\r\n  OR (author: \"davegilboa\" OR inUrl: \"instagram.com/davegilboa\")\r\n  OR (author: \"neilblumenthal\" OR inUrl: \"instagram.com/neilblumenthal\")\r\n  OR (author: \"warbyparker\" OR inUrl: \"instagram.com/warbyparker\")\r\n  OR (author: \"perplexity\" OR inUrl: \"instagram.com/perplexity\")\r\n  OR (author: \"prada\" OR inUrl: \"instagram.com/prada\")\r\n  OR (author: \"netflix\" OR inUrl: \"instagram.com/netflix\")\r\n  OR (author: \"strava\" OR inUrl: \"instagram.com/strava\")\r\n  OR (author: \"ifit\" OR inUrl: \"instagram.com/ifit\")\r\n  OR (author: \"ibm\" OR inUrl: \"instagram.com/ibm\")\r\n  OR (author: \"cisco\" OR inUrl: \"instagram.com/cisco\")\r\n  OR (author: \"verizon\" OR inUrl: \"instagram.com/verizon\")\r\n  OR (author: \"ee\" OR inUrl: \"instagram.com/ee\")\r\n  OR (author: \"virginmedia\" OR inUrl: \"instagram.com/virginmedia\")\r\n  OR (author: \"currys\" OR inUrl: \"instagram.com/currys\")\r\n  OR (author: \"tescomobile\" OR inUrl: \"instagram.com/tescomobile\")\r\n  OR (author: \"argos\" OR inUrl: \"instagram.com/argos\")\r\n  OR (author: \"zainkuwait\" OR inUrl: \"instagram.com/zainkuwait\")\r\n  OR (author: \"ooredooqatar\" OR inUrl: \"instagram.com/ooredooqatar\")\r\n  OR (author: \"mediamarkt_tr\" OR inUrl: \"instagram.com/mediamarkt_tr\")\r\n  OR (author: \"turkcell\" OR inUrl: \"instagram.com/turkcell\")\r\n  OR (author: \"jarirbookstore\" OR inUrl: \"instagram.com/jarirbookstore\")\r\n  OR (author: \"cellcomcom\" OR inUrl: \"instagram.com/cellcomcom\")\r\n  OR (author: \"poorvika_india\" OR inUrl: \"instagram.com/poorvika_india\")\r\n  OR (author: \"croma.retail\" OR inUrl: \"instagram.com/croma.retail\")\r\n  OR (author: \"reliancejio\" OR inUrl: \"instagram.com/reliancejio\")\r\n  OR (author: \"softbank_official\" OR inUrl: \"instagram.com/softbank_official\")\r\n  OR (author: \"docomo.official\" OR inUrl: \"instagram.com/docomo.official\")\r\n  OR (author: \"att\" OR inUrl: \"instagram.com/att\")\r\n  OR (author: \"tmobile\" OR inUrl: \"instagram.com/tmobile\")\r\n  OR (author: \"rogers\" OR inUrl: \"instagram.com/rogers\")\r\n  OR (author: \"bell\" OR inUrl: \"instagram.com/bell\")\r\n  OR (author: \"vodafonegroup\" OR inUrl: \"instagram.com/vodafonegroup\")\r\n  OR (author: \"btgroup\" OR inUrl: \"instagram.com/btgroup\")\r\n  OR (author: \"deutschetelekom\" OR inUrl: \"instagram.com/deutschetelekom\")\r\n  OR (author: \"telefonica\" OR inUrl: \"instagram.com/telefonica\")\r\n  OR (author: \"orange\" OR inUrl: \"instagram.com/orange\")\r\n  OR (author: \"sktworld\" OR inUrl: \"instagram.com/sktworld\")\r\n  OR (author: \"kt.official\" OR inUrl: \"instagram.com/kt.official\")\r\n  OR (author: \"lguplus\" OR inUrl: \"instagram.com/lguplus\")\r\n  OR (author: \"singtel\" OR inUrl: \"instagram.com/singtel\")\r\n  OR (author: \"telstra\" OR inUrl: \"instagram.com/telstra\")\r\n  OR (author: \"bestbuy\" OR inUrl: \"instagram.com/bestbuy\")\r\n  OR (author: \"walmart\" OR inUrl: \"instagram.com/walmart\")\r\n  OR (author: \"target\" OR inUrl: \"instagram.com/target\")\r\n  OR (author: \"amazon\" OR inUrl: \"instagram.com/amazon\")\r\n  OR (author: \"apple\" OR inUrl: \"instagram.com/apple\")\r\n  OR (author: \"tescofood\" OR inUrl: \"instagram.com/tescofood\")\r\n  OR (author: \"harveynormanau\" OR inUrl: \"instagram.com/harveynormanau\")\r\n  OR (author: \"jbhifi\" OR inUrl: \"instagram.com/jbhifi\")\r\n  OR (author: \"reliance_digital\" OR inUrl: \"instagram.com/reliance_digital\")\r\n  OR (author: \"emartstore\" OR inUrl: \"instagram.com/emartstore\")\r\n)"
+      ],
+      "details": {
+        "displayNameForWarning": "Keyword Query",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "TOPIC_QUERY",
+        "HAS_ALERT": false,
+        "INPUT_TYPE": "FREE_TEXT",
+        "EXCLUDE_IN_THEME_PREVIEW": "true",
+        "EXIST_FILTER": false,
+        "singleSelect": "true",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "STRING"
+      }
+    },
+    {
+      "dimensionName": "LISTENING_MEDIA_TYPE",
+      "filterType": "IN",
+      "values": [
+        "INSTAGRAM"
+      ],
+      "details": {
+        "displayNameForWarning": "Source",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "LISTENING_MEDIA_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": null
+      }
+    },
+    {
+      "dimensionName": "SN_MESSAGE_TYPE",
+      "filterType": "IN",
+      "values": [
+        "36",
+        "305",
+        "311"
+      ],
+      "details": {
+        "displayNameForWarning": "Message Type",
+        "USE_SNAPSHOT_VALUE": false,
+        "type": "DIMENSION",
+        "OLD_DIM_NAME": "MESSAGE_TYPE",
+        "HAS_ALERT": false,
+        "nameQueryLookupSupported": "true",
+        "supportedMediaCSV": "ALL_SOURCES",
+        "HAS_TOOLTIP_DATA": true,
+        "reportName": "SPRINKSIGHTS",
+        "reports": [
+          "SPRINKSIGHTS"
+        ],
+        "dataType": "PICKLIST"
+      }
+    }
+  ],
+  "groupBys": [
+    {
+      "heading": "ES_MESSAGE_ID_0",
+      "dimensionName": "ES_MESSAGE_ID",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "USER_SCREEN_NAME_CUSTOM_1",
+      "dimensionName": "USER_SCREEN_NAME_CUSTOM",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    },
+    {
+      "heading": "PERMALINK_2",
+      "dimensionName": "PERMALINK",
+      "groupType": "FIELD",
+      "details": {},
+      "namedFilters": null
+    }
+  ],
+  "projections": [
+    {
+      "heading": "M_SPRINKSIGHTS_MENTIONS_COUNT_0",
+      "measurementName": "MENTIONS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    },
+    {
+      "heading": "M_SPRINKSIGHTS_COMMENTS_COUNT_1",
+      "measurementName": "COMMENTS_COUNT",
+      "aggregateFunction": "SUM",
+      "details": {}
+    }
+  ],
+  "projectionDecorations": [],
+  "projectionFilters": null,
+  "sorts": null,
+  "streamRequestInfo": null,
+  "additional": {
+    "Timezone": "Asia/Seoul",
+    "translateResponse": "false",
+    "fetchUnhealthyAccounts": "false",
+    "widgetId": "6a5dd10848f6062de953395d",
+    "exportInfo": "false",
+    "MARGIN": "false",
+    "dashboardId": "6a31f4e7eb6ecd3d9d42275f",
+    "engine": "LISTENING",
+    "showTotal": "true",
+    "chartType": "TABLE",
+    "showRolloverTrends": "false",
+    "TABULAR": "true"
+  },
+  "skipResolve": false,
+  "jsonResponse": false
+}
